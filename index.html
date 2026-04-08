@@ -7,83 +7,192 @@
 
   <style>
     :root {
-      --primary:#1e3a8a;
+      --primary:#0f172a;
       --accent:#2563eb;
-      --bg:#f5f7fb;
+      --bg:#f1f5f9;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
     }
 
     * { box-sizing:border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, sans-serif; background:var(--bg); }
 
-    header {
-      position:sticky; top:0; z-index:1000;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:white; padding:15px; text-align:center;
+    body {
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      background:var(--bg);
+      color:var(--text);
     }
 
-    .container { max-width:900px; margin:auto; padding:15px; }
+    header {
+      background:var(--primary);
+      color:white;
+      padding:18px 15px;
+      text-align:center;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h3 {
+      margin:0;
+      font-size:18px;
+    }
+
+    header small {
+      color:#cbd5f5;
+    }
+
+    .banner {
+      background:#111827;
+      color:#fff;
+      text-align:center;
+      padding:10px;
+      font-size:13px;
+    }
+
+    .container {
+      max-width:900px;
+      margin:auto;
+      padding:20px 15px;
+    }
 
     .search-box input {
-      width:100%; padding:12px; margin:10px 0;
-      border-radius:10px; border:1px solid #ddd;
+      width:100%;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #e2e8f0;
+      background:white;
+      font-size:14px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
     }
 
     .grid {
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
-      gap:10px;
+      grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+      gap:14px;
+      margin-top:15px;
     }
 
     .category {
-      background:white; padding:15px; border-radius:12px;
-      text-align:center; cursor:pointer;
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+      background:var(--card);
+      padding:18px;
+      border-radius:14px;
+      text-align:center;
+      cursor:pointer;
       font-weight:600;
+      transition:all .2s ease;
+      border:1px solid #e2e8f0;
     }
 
-    .card {
-      background:white; padding:14px; margin:10px 0;
-      border-radius:12px;
-      display:flex; justify-content:space-between; align-items:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    .category:hover {
+      transform:translateY(-4px);
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      border-color:var(--accent);
     }
 
-    .btn {
-      padding:10px 12px;
-      background:var(--accent);
-      color:white; border-radius:8px;
-      text-decoration:none; font-size:13px;
+    .data-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:10px;
     }
 
     .back-btn {
-      margin-bottom:10px;
-      display:inline-block;
-      background:#111; color:#fff;
+      padding:8px 12px;
+      background:#e2e8f0;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:13px;
+    }
+
+    .card {
+      background:var(--card);
+      padding:16px;
+      margin:10px 0;
+      border-radius:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      transition:all .2s;
+    }
+
+    .card:hover {
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .card strong {
+      font-size:14px;
+    }
+
+    .btn {
+      padding:10px 14px;
+      background:var(--accent);
+      color:white;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:500;
+      transition:.2s;
+    }
+
+    .btn:hover {
+      background:#1d4ed8;
     }
 
     .promo {
-      margin-top:20px;
-      background:white;
-      border-radius:14px;
+      margin-top:30px;
+      background:var(--card);
+      border-radius:16px;
       overflow:hidden;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      text-align:center;
+      border:1px solid #e2e8f0;
     }
 
     .promo-header {
       background:linear-gradient(135deg,#1e3a8a,#2563eb);
-      color:white; padding:20px;
+      color:white;
+      padding:20px;
+      text-align:center;
+    }
+
+    .promo-body {
+      padding:20px;
+      text-align:center;
     }
 
     .promo img {
-      width:110px; height:110px;
-      border-radius:50%; margin-top:-55px;
-      border:4px solid white;
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      margin-top:-45px;
+      border:3px solid white;
+    }
+
+    .promo h3 {
+      margin:10px 0 5px;
+    }
+
+    .promo p {
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .error {
+      color:red;
+      text-align:center;
+      margin-top:20px;
     }
 
     @media(max-width:600px){
-      .card { flex-direction:column; align-items:flex-start; }
-      .btn { width:100%; text-align:center; }
+      .card {
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+      }
+
+      .btn {
+        width:100%;
+        text-align:center;
+      }
     }
   </style>
 </head>
@@ -91,53 +200,91 @@
 
 <header>
   <h3>⚖️ Court VC Links</h3>
-  <small>Scan → Select → Join VC</small>
+  <small>Quick access for advocates</small>
 </header>
+
+<div class="banner">
+  🗳️ Vote for Advocate [Your Name] - Treasurer
+</div>
 
 <div class="container">
 
   <div class="search-box">
-    <input type="text" id="search" placeholder="🔍 Search court..." />
+    <input type="text" id="search" placeholder="Search court name..." />
   </div>
 
   <div id="categories" class="grid"></div>
 
   <div id="dataSection" style="display:none;">
-    <a class="btn back-btn" onclick="goBack()">⬅ Back</a>
-    <h3 id="categoryTitle"></h3>
+    <div class="data-header">
+      <div class="back-btn" onclick="goBack()">⬅ Back</div>
+      <h3 id="categoryTitle"></h3>
+    </div>
     <div id="dataList"></div>
   </div>
 
+  <div id="error" class="error"></div>
+
   <div class="promo">
     <div class="promo-header">
-      <h3>Vote for Progress</h3>
-      <p>Bar Elections</p>
+      <h3>Advocate [Your Name]</h3>
+      <p>Candidate - Treasurer</p>
     </div>
 
-    <img src="https://via.placeholder.com/150" />
-    <h3>Advocate [Your Name]</h3>
-    <p>Candidate - Treasurer</p>
-
-    <a class="btn" href="tel:+91XXXXXXXXXX">📞 Call</a>
+    <div class="promo-body">
+      <img src="https://via.placeholder.com/150" />
+      <p>
+        ✔ Transparent Accounts<br>
+        ✔ Digital Court Support<br>
+        ✔ Faster Advocate Services
+      </p>
+      <a class="btn" href="tel:+91XXXXXXXXXX">Contact</a>
+    </div>
   </div>
 
 </div>
 
 <script>
+// TEMP: Using dummy fallback + official site link
 const sheetURL = "https://opensheet.elk.sh/YOUR_SHEET_ID/Sheet1";
+
+// ✅ Dummy data for testing (Punjab & Haryana courts)
+const dummyData = [
+  { Category: "High Court", "Court Name": "Punjab & Haryana High Court", "VC Link": "https://new.phhc.gov.in/sitting-roster" },
+  { Category: "District Courts", "Court Name": "Panchkula District Court", "VC Link": "https://panchkula.dcourts.gov.in" },
+  { Category: "District Courts", "Court Name": "SAS Nagar (Mohali) Court", "VC Link": "https://sasnagar.dcourts.gov.in" },
+  { Category: "District Courts", "Court Name": "Chandigarh District Court", "VC Link": "https://districts.ecourts.gov.in/chandigarh" },
+  { Category: "Session Courts", "Court Name": "Ambala Session Court", "VC Link": "https://ambala.dcourts.gov.in" },
+  { Category: "Session Courts", "Court Name": "Kurukshetra Session Court", "VC Link": "https://kurukshetra.dcourts.gov.in" },
+  { Category: "Family Courts", "Court Name": "Family Court Chandigarh", "VC Link": "https://districts.ecourts.gov.in/chandigarh" },
+  { Category: "Consumer Courts", "Court Name": "Consumer Court Panchkula", "VC Link": "https://panchkula.nic.in" }
+];
 let globalData = [];
 
 async function init(){
-  const res = await fetch(sheetURL);
-  globalData = await res.json();
+  try {
+    const res = await fetch(sheetURL);
+    const data = await res.json();
+
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error();
+    }
+
+    globalData = data;
+
+  } catch (e) {
+    console.warn("Using dummy data for now", e);
+    globalData = dummyData;
+  }
 
   renderCategories();
   setupSearch();
 }
 
-function renderCategories(){
-  const categories = [...new Set(globalData.map(i=>i.Category))];
+init();
 
+function renderCategories(){
+  const categories = [...new Set(globalData.map(i => i.Category).filter(Boolean))];
   const container = document.getElementById("categories");
   container.innerHTML = '';
 
@@ -155,18 +302,30 @@ function loadData(category){
   document.getElementById('dataSection').style.display='block';
   document.getElementById('categoryTitle').innerText=category;
 
-  const filtered = globalData.filter(i=>i.Category===category);
+  const filtered = globalData.filter(i => i.Category === category);
+  renderCards(filtered);
+}
 
-  let html='';
-  filtered.forEach(item=>{
-    html += `
-      <div class="card">
-        <strong>${item['Court Name']}</strong>
-        <a class="btn" href="${item['VC Link']}" target="_blank">Join VC</a>
-      </div>`;
+function renderCards(list){
+  const container = document.getElementById('dataList');
+  container.innerHTML = '';
+
+  if (!list.length) {
+    container.innerHTML = '<p>No data found</p>';
+    return;
+  }
+
+  list.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'card';
+
+    div.innerHTML = `
+      <strong>${item['Court Name']}</strong>
+      <a class="btn" href="${item['VC Link']}" target="_blank">Join VC</a>
+    `;
+
+    container.appendChild(div);
   });
-
-  document.getElementById('dataList').innerHTML = html;
 }
 
 function setupSearch(){
@@ -175,32 +334,29 @@ function setupSearch(){
   input.addEventListener('input', () => {
     const val = input.value.toLowerCase();
 
+    if (!val) {
+      goBack();
+      return;
+    }
+
     const filtered = globalData.filter(i =>
       i['Court Name'] && i['Court Name'].toLowerCase().includes(val)
     );
 
-    let html='';
-    filtered.forEach(item=>{
-      html += `
-        <div class="card">
-          <strong>${item['Court Name']}</strong>
-          <a class="btn" href="${item['VC Link']}" target="_blank">Join VC</a>
-        </div>`;
-    });
-
     document.getElementById('dataSection').style.display='block';
     document.getElementById('categories').style.display='none';
     document.getElementById('categoryTitle').innerText='Search Results';
-    document.getElementById('dataList').innerHTML = html;
+
+    renderCards(filtered);
   });
 }
 
 function goBack(){
   document.getElementById('categories').style.display='grid';
   document.getElementById('dataSection').style.display='none';
+  document.getElementById('search').value = '';
 }
 
-init();
 </script>
 
 </body>
