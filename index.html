@@ -19,6 +19,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
   background:var(--bg);
   color:var(--text);
+  padding-top: 42px;
+  padding-bottom: 80px;
 }
 header {
   background:var(--primary);
@@ -29,12 +31,32 @@ header {
 }
 header h3 { margin:0; font-size:18px; }
 header small { color:#cbd5f5; }
+/* ── STICKY MARQUEE BANNER ── */
 .banner {
-  background:#111827;
-  color:#fff;
-  text-align:center;
-  padding:10px;
-  font-size:13px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #1e3a8a, #2563eb, #1e3a8a);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.banner .marquee-track {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+.banner .marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
 }
 .container {
   max-width:960px;
@@ -141,49 +163,76 @@ tbody td:first-child {
   color:var(--muted);
   font-size:14px;
 }
-.promo {
-  margin-top:30px;
-  background:var(--card);
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid #e2e8f0;
-}
-.promo-header {
-  background:linear-gradient(135deg,#1e3a8a,#2563eb);
-  color:white;
-  padding:20px;
-  text-align:center;
-}
-.promo-body {
-  padding:20px;
-  text-align:center;
-}
-.promo img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  margin-top: -45px;
-  border: 3px solid white;
-  object-fit: cover;
-  object-position: center top;  /* focuses on face/top of photo */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.promo h3 { margin:10px 0 5px; }
-.promo p { color:var(--muted); font-size:14px; }
 .error { color:red; text-align:center; margin-top:20px; }
-/* search highlight */
 mark {
   background:#fef08a;
   border-radius:3px;
   padding:0 2px;
 }
-@media(max-width:600px){
+/* ── FIXED BOTTOM PROMO BAR ── */
+.promo-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #0f172a, #1e3a8a, #0f172a);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+.promo-bar img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid #60a5fa;
+  flex-shrink: 0;
+}
+.promo-bar .promo-info { flex: 1; min-width: 0; }
+.promo-bar .promo-info strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.promo-bar .promo-info span {
+  font-size: 11px;
+  color: #93c5fd;
+}
+.promo-bar .promo-points {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: #bfdbfe;
+}
+.promo-bar .promo-points span::before { content: "✔ "; }
+@media(max-width:600px) {
+  .promo-bar .promo-points { display: none; }
   thead th { font-size:12px; padding:10px 8px; }
   tbody td { font-size:12px; padding:8px; }
 }
+.promo-bar .btn-call {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.promo-bar .btn-call:hover { background: #15803d; }
 </style>
 </head>
 <body>
@@ -191,8 +240,18 @@ mark {
   <h3>⚖️ Court VC Links</h3>
   <small>Quick access for Advocates</small>
 </header>
+<!-- STICKY MARQUEE BANNER -->
 <div class="banner">
-  🗳️ Vote for Advocate Prateek Garg - Candidate For Treasurer
+  <div class="marquee-track">
+    🗳️ Vote for Advocate Prateek Garg — Candidate For Treasurer &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    Experienced · Trusted · Dedicated to the Bar &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    Your Vote Makes a Difference! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    📞 +91 88948 31016 &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    🗳️ Vote for Advocate Prateek Garg — Candidate For Treasurer &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    Experienced · Trusted · Dedicated to the Bar &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    Your Vote Makes a Difference! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+    📞 +91 88948 31016 &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
+  </div>
 </div>
 <div class="container">
   <div class="search-box">
@@ -214,21 +273,24 @@ mark {
     <div id="dataList"></div>
   </div>
   <div id="error" class="error"></div>
-  <div class="promo">
-    <div class="promo-header">
-      <h3>Advocate Prateek Garg</h3>
-      <p>Candidate - Treasurer</p>
-    </div>
-    <div class="promo-body">
-      <img src="img/profile.jpg" alt="Advocate Prateek Garg" />
-      <p>
-        ✔ Transparent Accounts<br>
-        ✔ Digital Court Support<br>
-        ✔ Faster Advocate Services
-      </p>
-      <a class="btn" href="tel:+918894831016">Contact</a>
-    </div>
+</div>
+<!-- FIXED BOTTOM PROMO BAR -->
+<div class="promo-bar">
+  <img
+    src="img/profile.jpg"
+    alt="Prateek Garg"
+    onerror="this.src='https://ui-avatars.com/api/?name=Prateek+Garg&background=2563eb&color=fff&size=96'"
+  />
+  <div class="promo-info">
+    <strong>Advocate Prateek Garg</strong>
+    <span>Candidate for Treasurer — Bar Association</span>
   </div>
+  <div class="promo-points">
+    <span>Transparent Accounts</span>
+    <span>Digital Court Support</span>
+    <span>Faster Advocate Services</span>
+  </div>
+  <a class="btn-call" href="tel:+918894831016">📞 Call</a>
 </div>
 <script>
 const SHEET_ID = '15ILqRbBU5d0RpJNurwxAKIT7OcBQ-dM5h8c54SosPM8';
@@ -324,7 +386,6 @@ document.getElementById('search').addEventListener('input', function() {
   document.getElementById('categories').style.display = 'none';
   document.getElementById('dataSection').style.display = 'block';
   document.getElementById('categoryTitle').innerText = `🔍 Search: "${this.value}"`;
-  // Search across ALL tabs
   Promise.all(
     Object.entries(tabConfig).map(async ([tabName, config]) => {
       if (!cache[tabName]) {
@@ -344,7 +405,6 @@ document.getElementById('search').addEventListener('input', function() {
       document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No results found.</p>';
       return;
     }
-    // Group results by tab
     const grouped = {};
     all.forEach(row => {
       if (!grouped[row._tab]) grouped[row._tab] = { rows: [], config: row._config };
