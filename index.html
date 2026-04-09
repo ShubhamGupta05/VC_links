@@ -1,220 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Court VC Links</title>
-
-  <style>
-    :root {
-      --primary:#0f172a;
-      --accent:#2563eb;
-      --bg:#f1f5f9;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#64748b;
-    }
-
-    * { box-sizing:border-box; }
-
-    body {
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-      background:var(--bg);
-      color:var(--text);
-    }
-
-    header {
-      background:var(--primary);
-      color:white;
-      padding:18px 15px;
-      text-align:center;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    header h3 {
-      margin:0;
-      font-size:18px;
-    }
-
-    header small {
-      color:#cbd5f5;
-    }
-
-    .banner {
-      background:#111827;
-      color:#fff;
-      text-align:center;
-      padding:10px;
-      font-size:13px;
-    }
-
-    .container {
-      max-width:900px;
-      margin:auto;
-      padding:20px 15px;
-    }
-
-    .search-box input {
-      width:100%;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid #e2e8f0;
-      background:white;
-      font-size:14px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
-      gap:14px;
-      margin-top:15px;
-    }
-
-    .category {
-      background:var(--card);
-      padding:18px;
-      border-radius:14px;
-      text-align:center;
-      cursor:pointer;
-      font-weight:600;
-      transition:all .2s ease;
-      border:1px solid #e2e8f0;
-    }
-
-    .category:hover {
-      transform:translateY(-4px);
-      box-shadow:0 6px 16px rgba(0,0,0,0.08);
-      border-color:var(--accent);
-    }
-
-    .data-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:10px;
-    }
-
-    .back-btn {
-      padding:8px 12px;
-      background:#e2e8f0;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:13px;
-    }
-
-    .card {
-      background:var(--card);
-      padding:16px;
-      margin:10px 0;
-      border-radius:14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border:1px solid #e2e8f0;
-      transition:all .2s;
-    }
-
-    .card:hover {
-      box-shadow:0 4px 12px rgba(0,0,0,0.06);
-    }
-
-    .card strong {
-      font-size:14px;
-    }
-
-    .btn {
-      padding:10px 14px;
-      background:var(--accent);
-      color:white;
-      border-radius:10px;
-      text-decoration:none;
-      font-size:13px;
-      font-weight:500;
-      transition:.2s;
-    }
-
-    .btn:hover {
-      background:#1d4ed8;
-    }
-
-    .promo {
-      margin-top:30px;
-      background:var(--card);
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid #e2e8f0;
-    }
-
-    .promo-header {
-      background:linear-gradient(135deg,#1e3a8a,#2563eb);
-      color:white;
-      padding:20px;
-      text-align:center;
-    }
-
-    .promo-body {
-      padding:20px;
-      text-align:center;
-    }
-
-    .promo img {
-      width:90px;
-      height:90px;
-      border-radius:50%;
-      margin-top:-45px;
-      border:3px solid white;
-    }
-
-    .promo h3 {
-      margin:10px 0 5px;
-    }
-
-    .promo p {
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .error {
-      color:red;
-      text-align:center;
-      margin-top:20px;
-    }
-
-    @media(max-width:600px){
-      .card {
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-      }
-
-      .btn {
-        width:100%;
-        text-align:center;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Court VC Links</title>
+<style>
+:root {
+  --primary:#0f172a;
+  --accent:#2563eb;
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  background:var(--bg);
+  color:var(--text);
+}
+header {
+  background:var(--primary);
+  color:white;
+  padding:18px 15px;
+  text-align:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+header h3 { margin:0; font-size:18px; }
+header small { color:#cbd5f5; }
+.banner {
+  background:#111827;
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  font-size:13px;
+}
+.container {
+  max-width:960px;
+  margin:auto;
+  padding:20px 15px;
+}
+.search-box input {
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #e2e8f0;
+  background:white;
+  font-size:14px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+  gap:14px;
+  margin-top:15px;
+}
+.category {
+  background:var(--card);
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+  cursor:pointer;
+  font-weight:600;
+  transition:all .2s ease;
+  border:1px solid #e2e8f0;
+}
+.category:hover {
+  transform:translateY(-4px);
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
+  border-color:var(--accent);
+}
+.data-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.back-btn {
+  padding:8px 12px;
+  background:#e2e8f0;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+/* TABLE STYLES */
+.table-wrapper {
+  overflow-x:auto;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.07);
+  background:white;
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+thead tr {
+  background:var(--primary);
+  color:white;
+}
+thead th {
+  padding:12px 14px;
+  text-align:left;
+  font-weight:600;
+  white-space:nowrap;
+}
+tbody tr:nth-child(even) { background:#f8fafc; }
+tbody tr:hover { background:#eff6ff; }
+tbody td {
+  padding:10px 14px;
+  border-bottom:1px solid #e2e8f0;
+  vertical-align:top;
+  line-height:1.5;
+}
+tbody td:first-child {
+  text-align:center;
+  font-weight:600;
+  color:var(--muted);
+  width:48px;
+}
+.btn {
+  padding:7px 12px;
+  background:var(--accent);
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:500;
+  transition:.2s;
+  white-space:nowrap;
+  display:inline-block;
+}
+.btn:hover { background:#1d4ed8; }
+.loading {
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+  font-size:14px;
+}
+.promo {
+  margin-top:30px;
+  background:var(--card);
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid #e2e8f0;
+}
+.promo-header {
+  background:linear-gradient(135deg,#1e3a8a,#2563eb);
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+.promo-body {
+  padding:20px;
+  text-align:center;
+}
+.promo img {
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  margin-top:-45px;
+  border:3px solid white;
+}
+.promo h3 { margin:10px 0 5px; }
+.promo p { color:var(--muted); font-size:14px; }
+.error { color:red; text-align:center; margin-top:20px; }
+/* search highlight */
+mark {
+  background:#fef08a;
+  border-radius:3px;
+  padding:0 2px;
+}
+@media(max-width:600px){
+  thead th { font-size:12px; padding:10px 8px; }
+  tbody td { font-size:12px; padding:8px; }
+}
+</style>
 </head>
 <body>
-
 <header>
   <h3>⚖️ Court VC Links</h3>
   <small>Quick access for advocates</small>
 </header>
-
 <div class="banner">
   🗳️ Vote for Advocate [Your Name] - Treasurer
 </div>
-
 <div class="container">
-
   <div class="search-box">
-    <input type="text" id="search" placeholder="Search court name..." />
+    <input type="text" id="search" placeholder="Search court or judge name..." />
   </div>
-
-  <div id="categories" class="grid"></div>
-
+  <!-- Category Cards -->
+  <div id="categories" class="grid">
+    <div class="category" onclick="loadTab('Mohali')">⚖️ Mohali</div>
+    <div class="category" onclick="loadTab('Chandigarh')">🏛️ Chandigarh</div>
+    <div class="category" onclick="loadTab('Panchkula')">📋 Panchkula</div>
+    <div class="category" onclick="loadTab('highcourt')">🔱 High Court</div>
+  </div>
+  <!-- Data Section -->
   <div id="dataSection" style="display:none;">
     <div class="data-header">
       <div class="back-btn" onclick="goBack()">⬅ Back</div>
@@ -222,15 +207,12 @@
     </div>
     <div id="dataList"></div>
   </div>
-
   <div id="error" class="error"></div>
-
   <div class="promo">
     <div class="promo-header">
       <h3>Advocate [Your Name]</h3>
       <p>Candidate - Treasurer</p>
     </div>
-
     <div class="promo-body">
       <img src="https://via.placeholder.com/150" />
       <p>
@@ -241,123 +223,160 @@
       <a class="btn" href="tel:+91XXXXXXXXXX">Contact</a>
     </div>
   </div>
-
 </div>
-
 <script>
-// TEMP: Using dummy fallback + official site link
-const sheetURL = "https://opensheet.elk.sh/YOUR_SHEET_ID/Sheet1";
-
-// ✅ Dummy data for testing (Punjab & Haryana courts)
-const dummyData = [
-  { Category: "High Court", "Court Name": "Punjab & Haryana High Court", "VC Link": "https://new.phhc.gov.in/sitting-roster" },
-  { Category: "District Courts", "Court Name": "Panchkula District Court", "VC Link": "https://panchkula.dcourts.gov.in" },
-  { Category: "District Courts", "Court Name": "SAS Nagar (Mohali) Court", "VC Link": "https://sasnagar.dcourts.gov.in" },
-  { Category: "District Courts", "Court Name": "Chandigarh District Court", "VC Link": "https://districts.ecourts.gov.in/chandigarh" },
-  { Category: "Session Courts", "Court Name": "Ambala Session Court", "VC Link": "https://ambala.dcourts.gov.in" },
-  { Category: "Session Courts", "Court Name": "Kurukshetra Session Court", "VC Link": "https://kurukshetra.dcourts.gov.in" },
-  { Category: "Family Courts", "Court Name": "Family Court Chandigarh", "VC Link": "https://districts.ecourts.gov.in/chandigarh" },
-  { Category: "Consumer Courts", "Court Name": "Consumer Court Panchkula", "VC Link": "https://panchkula.nic.in" }
-];
-let globalData = [];
-
-async function init(){
-  try {
-    const res = await fetch(sheetURL);
-    const data = await res.json();
-
-    if (!Array.isArray(data) || data.length === 0) {
-      throw new Error();
-    }
-
-    globalData = data;
-
-  } catch (e) {
-    console.warn("Using dummy data for now", e);
-    globalData = dummyData;
+const SHEET_ID = '15ILqRbBU5d0RpJNurwxAKIT7OcBQ-dM5h8c54SosPM8';
+const BASE = `https://opensheet.elk.sh/${SHEET_ID}`;
+let cache = {};
+let currentTab = '';
+// ── TAB CONFIG ──
+const tabConfig = {
+  'Mohali': {
+    title: '⚖️ Mohali District Courts',
+    headers: ['Sr. No.', 'Name of Judicial Officer', 'VC Link (Google Meet)', 'Reader Contact Details', 'Naib Court Contact Details', 'Court Room Number'],
+    keys:    ['Sr. No.', 'Name of Judicial Officer', 'VC Link (Google Meet)', 'Reader Contact Details', 'Naib Court Contact Details', 'Court Room Number'],
+    linkCols: ['VC Link (Google Meet)'],
+    filterEmpty: 'VC Link (Google Meet)'
+  },
+  'Chandigarh': {
+    title: '🏛️ Chandigarh District Courts',
+    headers: ['Sr. No.', 'Name of Court', 'Google Meet', 'Zoom Link', 'Zoom Meeting ID', 'Zoom Passcode', 'BharatVC Link', 'BharatVC Meeting ID', 'BharatVC PWD', 'Reader Name', 'Contact'],
+    keys:    ['Sr. No.', 'Name of Court', 'Google Meet Link', 'Zoom Link', 'Zoom Meeting ID', 'Zoom Passcode', 'BharatVC Link', 'BharatVC Meeting ID', 'BharatVC PWD', 'Name Of Reader', 'Contact Number'],
+    linkCols: ['Google Meet Link', 'Zoom Link', 'BharatVC Link'],
+    filterEmpty: 'Name of Court'
+  },
+  'Panchkula': {
+    title: '📋 Panchkula District Courts',
+    headers: ['SR NO', "Name of Judicial Officer's", 'Google Meet Link', 'VC Coordinator Name', 'VC Coordinator Contact', 'VC Coordinator Email', 'Naib Court Name', 'Naib Court Contact'],
+    keys:    ['SR NO', "Name Of Judicial Officer's", 'GOOGLE MEET Link', 'VC Coordinator Name', 'VC Coordinator Contact', 'VC Coordinator Email ID', 'Naib Court Name', 'Naib Court Contact'],
+    linkCols: ['GOOGLE MEET Link'],
+    filterEmpty: 'GOOGLE MEET Link'
+  },
+  'highcourt': {
+    title: '🔱 Punjab & Haryana High Court',
+    headers: ['Sr. No.', "Hon'ble Judge Name", 'Court Room', 'Roster', 'VC Link (Zoom)', 'Meeting ID', 'Not Holding Court', 'Distribution Court No.'],
+    keys:    ['Sr. No.', "Hon'ble Judge Name", 'Court Room NO', 'ROSTER Detail', 'VC Link For ZOOM', 'Meeting ID', 'Judges Not Holding Court', 'Distribution Court NO'],
+    linkCols: ['VC Link For ZOOM'],
+    filterEmpty: "Hon'ble Judge Name"
   }
-
-  renderCategories();
-  setupSearch();
+};
+// ── LOAD TAB ──
+async function loadTab(tabName) {
+  currentTab = tabName;
+  const config = tabConfig[tabName];
+  document.getElementById('categories').style.display = 'none';
+  document.getElementById('dataSection').style.display = 'block';
+  document.getElementById('categoryTitle').innerText = config.title;
+  document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Loading data...</div>';
+  try {
+    if (!cache[tabName]) {
+      const res = await fetch(`${BASE}/${tabName}`);
+      cache[tabName] = await res.json();
+    }
+    renderTable(cache[tabName], config);
+  } catch(e) {
+    document.getElementById('dataList').innerHTML = '<p class="error">❌ Failed to load data. Please try again.</p>';
+  }
 }
-
-init();
-
-function renderCategories(){
-  const categories = [...new Set(globalData.map(i => i.Category).filter(Boolean))];
-  const container = document.getElementById("categories");
-  container.innerHTML = '';
-
-  categories.forEach(cat => {
-    const div = document.createElement('div');
-    div.className = 'category';
-    div.textContent = cat;
-    div.onclick = () => loadData(cat);
-    container.appendChild(div);
-  });
-}
-
-function loadData(category){
-  document.getElementById('categories').style.display='none';
-  document.getElementById('dataSection').style.display='block';
-  document.getElementById('categoryTitle').innerText=category;
-
-  const filtered = globalData.filter(i => i.Category === category);
-  renderCards(filtered);
-}
-
-function renderCards(list){
-  const container = document.getElementById('dataList');
-  container.innerHTML = '';
-
-  if (!list.length) {
-    container.innerHTML = '<p>No data found</p>';
+// ── RENDER TABLE ──
+function renderTable(data, config, highlight = '') {
+  const filtered = data.filter(row => row[config.filterEmpty] && row[config.filterEmpty].trim() !== '');
+  if (!filtered.length) {
+    document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No data found.</p>';
     return;
   }
-
-  list.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'card';
-
-    div.innerHTML = `
-      <strong>${item['Court Name']}</strong>
-      <a class="btn" href="${item['VC Link']}" target="_blank">Join VC</a>
-    `;
-
-    container.appendChild(div);
-  });
+  const thead = config.headers.map(h => `<th>${h}</th>`).join('');
+  const tbody = filtered.map(row => {
+    const cells = config.keys.map((key, i) => {
+      const val = row[key] || '';
+      if (config.linkCols.includes(key) && val.startsWith('http')) {
+        return `<td><a class="btn" href="${val}" target="_blank" rel="noopener">🔗 Join</a></td>`;
+      }
+      const displayed = highlight
+        ? val.replace(new RegExp(`(${highlight})`, 'gi'), '<mark>$1</mark>')
+        : val || '-';
+      return `<td>${displayed}</td>`;
+    }).join('');
+    return `<tr>${cells}</tr>`;
+  }).join('');
+  document.getElementById('dataList').innerHTML = `
+    <div class="table-wrapper">
+      <table>
+        <thead><tr>${thead}</tr></thead>
+        <tbody>${tbody}</tbody>
+      </table>
+    </div>
+  `;
 }
-
-function setupSearch(){
-  const input = document.getElementById('search');
-
-  input.addEventListener('input', () => {
-    const val = input.value.toLowerCase();
-
-    if (!val) {
-      goBack();
+// ── SEARCH ──
+document.getElementById('search').addEventListener('input', function() {
+  const val = this.value.trim().toLowerCase();
+  if (!val) {
+    goBack();
+    return;
+  }
+  document.getElementById('categories').style.display = 'none';
+  document.getElementById('dataSection').style.display = 'block';
+  document.getElementById('categoryTitle').innerText = `🔍 Search: "${this.value}"`;
+  // Search across ALL tabs
+  Promise.all(
+    Object.entries(tabConfig).map(async ([tabName, config]) => {
+      if (!cache[tabName]) {
+        const res = await fetch(`${BASE}/${tabName}`);
+        cache[tabName] = await res.json();
+      }
+      return cache[tabName]
+        .filter(row => row[config.filterEmpty])
+        .filter(row =>
+          Object.values(row).some(v => v && v.toString().toLowerCase().includes(val))
+        )
+        .map(row => ({ ...row, _tab: config.title, _config: config }));
+    })
+  ).then(results => {
+    const all = results.flat();
+    if (!all.length) {
+      document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No results found.</p>';
       return;
     }
-
-    const filtered = globalData.filter(i =>
-      i['Court Name'] && i['Court Name'].toLowerCase().includes(val)
-    );
-
-    document.getElementById('dataSection').style.display='block';
-    document.getElementById('categories').style.display='none';
-    document.getElementById('categoryTitle').innerText='Search Results';
-
-    renderCards(filtered);
+    // Group results by tab
+    const grouped = {};
+    all.forEach(row => {
+      if (!grouped[row._tab]) grouped[row._tab] = { rows: [], config: row._config };
+      grouped[row._tab].rows.push(row);
+    });
+    let html = '';
+    for (const [title, { rows, config }] of Object.entries(grouped)) {
+      const thead = config.headers.map(h => `<th>${h}</th>`).join('');
+      const tbody = rows.map(row => {
+        const cells = config.keys.map(key => {
+          const v = row[key] || '';
+          if (config.linkCols.includes(key) && v.startsWith('http')) {
+            return `<td><a class="btn" href="${v}" target="_blank" rel="noopener">🔗 Join</a></td>`;
+          }
+          const displayed = v.replace(new RegExp(`(${val})`, 'gi'), '<mark>$1</mark>') || '-';
+          return `<td>${displayed}</td>`;
+        }).join('');
+        return `<tr>${cells}</tr>`;
+      }).join('');
+      html += `
+        <p style="font-weight:700;margin:16px 0 8px;color:#1e3a8a;">${title}</p>
+        <div class="table-wrapper" style="margin-bottom:20px;">
+          <table>
+            <thead><tr>${thead}</tr></thead>
+            <tbody>${tbody}</tbody>
+          </table>
+        </div>`;
+    }
+    document.getElementById('dataList').innerHTML = html;
   });
-}
-
-function goBack(){
-  document.getElementById('categories').style.display='grid';
-  document.getElementById('dataSection').style.display='none';
+});
+// ── BACK ──
+function goBack() {
+  document.getElementById('categories').style.display = 'grid';
+  document.getElementById('dataSection').style.display = 'none';
   document.getElementById('search').value = '';
+  currentTab = '';
 }
-
 </script>
-
 </body>
 </html>
