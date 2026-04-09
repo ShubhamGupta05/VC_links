@@ -159,12 +159,18 @@ tbody td:first-child {
   text-align:center;
 }
 .promo img {
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  margin-top:-45px;
-  border:3px solid white;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-top: -45px;
+  border: 3px solid white;
+  object-fit: cover;
+  object-position: center top;  /* focuses on face/top of photo */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .promo h3 { margin:10px 0 5px; }
 .promo p { color:var(--muted); font-size:14px; }
 .error { color:red; text-align:center; margin-top:20px; }
@@ -183,10 +189,10 @@ mark {
 <body>
 <header>
   <h3>⚖️ Court VC Links</h3>
-  <small>Quick access for advocates</small>
+  <small>Quick access for Advocates</small>
 </header>
 <div class="banner">
-  🗳️ Vote for Advocate [Your Name] - Treasurer
+  🗳️ Vote for Advocate Prateek Garg - Candidate For Treasurer
 </div>
 <div class="container">
   <div class="search-box">
@@ -210,17 +216,17 @@ mark {
   <div id="error" class="error"></div>
   <div class="promo">
     <div class="promo-header">
-      <h3>Advocate [Your Name]</h3>
+      <h3>Advocate Prateek Garg</h3>
       <p>Candidate - Treasurer</p>
     </div>
     <div class="promo-body">
-      <img src="https://via.placeholder.com/150" />
+      <img src="img/profile.jpg" alt="Advocate Prateek Garg" />
       <p>
         ✔ Transparent Accounts<br>
         ✔ Digital Court Support<br>
         ✔ Faster Advocate Services
       </p>
-      <a class="btn" href="tel:+91XXXXXXXXXX">Contact</a>
+      <a class="btn" href="tel:+918894831016">Contact</a>
     </div>
   </div>
 </div>
