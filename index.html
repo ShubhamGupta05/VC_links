@@ -281,6 +281,7 @@ mark {
     <div class="data-header">
       <div class="back-btn" onclick="goBack()">⬅ Back</div>
       <h3 id="categoryTitle"></h3>
+      <div class="back-btn" onclick="refreshCurrentTab()" title="Fetch the latest data from the sheet">🔄 Refresh</div>
     </div>
     <div id="dataList"></div>
   </div>
@@ -311,8 +312,42 @@ mark {
 <script>
 const SHEET_ID = '15ILqRbBU5d0RpJNurwxAKIT7OcBQ-dM5h8c54SosPM8';
 const BASE = `https://opensheet.elk.sh/${SHEET_ID}`;
+const CACHE_TTL = 3 * 24 * 60 * 60 * 1000; // 3 days
+const CACHE_VERSION = 'v1'; // bump this string when sheet structure changes to invalidate user caches
 let cache = {};
 let currentTab = '';
+
+// ── PERSISTENT CACHE (localStorage + TTL) ──
+function getCached(tabName) {
+  if (cache[tabName]) return cache[tabName];
+  try {
+    const raw = localStorage.getItem(`vc_${CACHE_VERSION}_${tabName}`);
+    if (!raw) return null;
+    const { ts, data } = JSON.parse(raw);
+    if (Date.now() - ts > CACHE_TTL) return null;
+    cache[tabName] = data;
+    return data;
+  } catch (e) { return null; }
+}
+function setCached(tabName, data) {
+  cache[tabName] = data;
+  try {
+    localStorage.setItem(`vc_${CACHE_VERSION}_${tabName}`, JSON.stringify({ ts: Date.now(), data }));
+  } catch (e) { /* quota exceeded — in-memory cache still works */ }
+}
+async function fetchTab(tabName, forceRefresh = false) {
+  if (!forceRefresh) {
+    const hit = getCached(tabName);
+    if (hit) return hit;
+  }
+  const res = await fetch(`${BASE}/${tabName}`);
+  const data = await res.json();
+  setCached(tabName, data);
+  return data;
+}
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 // ── TAB CONFIG ──
 const tabConfig = {
   'Mohali': {
@@ -345,7 +380,7 @@ const tabConfig = {
   }
 };
 // ── LOAD TAB ──
-async function loadTab(tabName) {
+async function loadTab(tabName, forceRefresh = false) {
   currentTab = tabName;
   const config = tabConfig[tabName];
   document.getElementById('categories').style.display = 'none';
@@ -353,14 +388,14 @@ async function loadTab(tabName) {
   document.getElementById('categoryTitle').innerText = config.title;
   document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Loading data...</div>';
   try {
-    if (!cache[tabName]) {
-      const res = await fetch(`${BASE}/${tabName}`);
-      cache[tabName] = await res.json();
-    }
-    renderTable(cache[tabName], config);
+    const data = await fetchTab(tabName, forceRefresh);
+    renderTable(data, config);
   } catch(e) {
     document.getElementById('dataList').innerHTML = '<p class="error">❌ Failed to load data. Please try again.</p>';
   }
+}
+function refreshCurrentTab() {
+  if (currentTab) loadTab(currentTab, true);
 }
 // ── RENDER TABLE ──
 function renderTable(data, config, highlight = '') {
@@ -392,30 +427,35 @@ function renderTable(data, config, highlight = '') {
     </div>
   `;
 }
-// ── SEARCH ──
+// ── SEARCH (debounced) ──
+let searchTimer = null;
 document.getElementById('search').addEventListener('input', function() {
-  const val = this.value.trim().toLowerCase();
+  clearTimeout(searchTimer);
+  const raw = this.value;
+  searchTimer = setTimeout(() => runSearch(raw), 300);
+});
+async function runSearch(raw) {
+  const val = raw.trim().toLowerCase();
   if (!val) {
     goBack();
     return;
   }
   document.getElementById('categories').style.display = 'none';
   document.getElementById('dataSection').style.display = 'block';
-  document.getElementById('categoryTitle').innerText = `🔍 Search: "${this.value}"`;
-  Promise.all(
-    Object.entries(tabConfig).map(async ([tabName, config]) => {
-      if (!cache[tabName]) {
-        const res = await fetch(`${BASE}/${tabName}`);
-        cache[tabName] = await res.json();
-      }
-      return cache[tabName]
-        .filter(row => row[config.filterEmpty])
-        .filter(row =>
-          Object.values(row).some(v => v && v.toString().toLowerCase().includes(val))
-        )
-        .map(row => ({ ...row, _tab: config.title, _config: config }));
-    })
-  ).then(results => {
+  document.getElementById('categoryTitle').innerText = `🔍 Search: "${raw}"`;
+  document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Searching...</div>';
+  try {
+    const results = await Promise.all(
+      Object.entries(tabConfig).map(async ([tabName, config]) => {
+        const data = await fetchTab(tabName);
+        return data
+          .filter(row => row[config.filterEmpty])
+          .filter(row =>
+            Object.values(row).some(v => v && v.toString().toLowerCase().includes(val))
+          )
+          .map(row => ({ ...row, _tab: config.title, _config: config }));
+      })
+    );
     const all = results.flat();
     if (!all.length) {
       document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No results found.</p>';
@@ -426,6 +466,7 @@ document.getElementById('search').addEventListener('input', function() {
       if (!grouped[row._tab]) grouped[row._tab] = { rows: [], config: row._config };
       grouped[row._tab].rows.push(row);
     });
+    const safe = escapeRegex(val);
     let html = '';
     for (const [title, { rows, config }] of Object.entries(grouped)) {
       const thead = config.headers.map(h => `<th>${h}</th>`).join('');
@@ -435,7 +476,7 @@ document.getElementById('search').addEventListener('input', function() {
           if (config.linkCols.includes(key) && v.startsWith('http')) {
             return `<td><a class="btn" href="${v}" target="_blank" rel="noopener">🔗 Join</a></td>`;
           }
-          const displayed = v.replace(new RegExp(`(${val})`, 'gi'), '<mark>$1</mark>') || '-';
+          const displayed = v.replace(new RegExp(`(${safe})`, 'gi'), '<mark>$1</mark>') || '-';
           return `<td>${displayed}</td>`;
         }).join('');
         return `<tr>${cells}</tr>`;
@@ -450,8 +491,10 @@ document.getElementById('search').addEventListener('input', function() {
         </div>`;
     }
     document.getElementById('dataList').innerHTML = html;
-  });
-});
+  } catch (e) {
+    document.getElementById('dataList').innerHTML = '<p class="error">❌ Search failed. Please try again.</p>';
+  }
+}
 // ── BACK ──
 function goBack() {
   document.getElementById('categories').style.display = 'grid';
