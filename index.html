@@ -93,6 +93,30 @@ header small { color:#cbd5f5; }
   box-shadow:0 6px 16px rgba(0,0,0,0.08);
   border-color:var(--accent);
 }
+.category.soon {
+  position: relative;
+  cursor: not-allowed;
+  color: #94a3b8;
+  background: #f8fafc;
+  border-style: dashed;
+}
+.category.soon:hover {
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border-color: #cbd5e1;
+}
+.category.soon .soon-badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: #f59e0b;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
 .data-header {
   display:flex;
   align-items:center;
@@ -113,8 +137,56 @@ header small { color:#cbd5f5; }
   overflow-x:auto;
   border-radius:12px;
   box-shadow:0 2px 10px rgba(0,0,0,0.07);
-  background:white;
+  /* Scroll-shadow pattern: edge gradients reveal more content exists to the side.
+     They auto-shrink as the user scrolls toward that edge. */
+  background:
+    linear-gradient(to right, #ffffff 30%, rgba(255,255,255,0)) 0 0,
+    linear-gradient(to right, rgba(255,255,255,0), #ffffff 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%, rgba(37,99,235,0.25), rgba(0,0,0,0)) 0 0,
+    radial-gradient(farthest-side at 100% 50%, rgba(37,99,235,0.25), rgba(0,0,0,0)) 100% 0;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+  background-attachment: local, local, scroll, scroll;
+  scrollbar-width: thin;
 }
+.table-wrapper::-webkit-scrollbar { height: 8px; }
+.table-wrapper::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 0 0 12px 12px; }
+.table-wrapper::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+.table-wrapper::-webkit-scrollbar-thumb:hover { background: #64748b; }
+.scroll-hint {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 10px;
+  padding: 9px 14px;
+  background: linear-gradient(90deg, #2563eb, #1e3a8a);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+}
+.scroll-hint .arrow {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  color: #bfdbfe;
+}
+.scroll-hint .arrow.left  { animation: nudgeLeft  1.4s ease-in-out infinite; }
+.scroll-hint .arrow.right { animation: nudgeRight 1.4s ease-in-out infinite; }
+@keyframes nudgeLeft {
+  0%,100% { transform: translateX(0);    opacity: 0.6; }
+  50%     { transform: translateX(-4px); opacity: 1;   }
+}
+@keyframes nudgeRight {
+  0%,100% { transform: translateX(0);    opacity: 0.6; }
+  50%     { transform: translateX(4px);  opacity: 1;   }
+}
+@media(max-width:760px) { .scroll-hint { display: flex; } }
 table {
   width:100%;
   border-collapse:collapse;
@@ -275,12 +347,20 @@ mark {
     <div class="category" onclick="loadTab('Chandigarh')">🏛️ Chandigarh</div>
     <div class="category" onclick="loadTab('Panchkula')">📋 Panchkula</div>
     <div class="category" onclick="loadTab('highcourt')">🔱 High Court</div>
+    <div class="category" onclick="loadTab('Punjab Consumer')">🛡️ Punjab Consumer</div>
+    <div class="category" onclick="loadTab('Chandigarh Consumer')">🛡️ Chandigarh Consumer</div>
+    <div class="category" onclick="loadTab('Rera Punjab')">🏢 RERA Punjab</div>
+    <div class="category soon" aria-disabled="true">
+      🛡️ Haryana Consumer
+      <div class="soon-badge">Coming Soon</div>
+    </div>
   </div>
   <!-- Data Section -->
   <div id="dataSection" style="display:none;">
     <div class="data-header">
       <div class="back-btn" onclick="goBack()">⬅ Back</div>
       <h3 id="categoryTitle"></h3>
+      <div class="back-btn" onclick="refreshCurrentTab()" title="Fetch the latest data from the sheet">🔄 Refresh</div>
     </div>
     <div id="dataList"></div>
   </div>
@@ -311,8 +391,42 @@ mark {
 <script>
 const SHEET_ID = '15ILqRbBU5d0RpJNurwxAKIT7OcBQ-dM5h8c54SosPM8';
 const BASE = `https://opensheet.elk.sh/${SHEET_ID}`;
+const CACHE_TTL = 3 * 24 * 60 * 60 * 1000; // 3 days
+const CACHE_VERSION = 'v1'; // bump this string when sheet structure changes to invalidate user caches
 let cache = {};
 let currentTab = '';
+
+// ── PERSISTENT CACHE (localStorage + TTL) ──
+function getCached(tabName) {
+  if (cache[tabName]) return cache[tabName];
+  try {
+    const raw = localStorage.getItem(`vc_${CACHE_VERSION}_${tabName}`);
+    if (!raw) return null;
+    const { ts, data } = JSON.parse(raw);
+    if (Date.now() - ts > CACHE_TTL) return null;
+    cache[tabName] = data;
+    return data;
+  } catch (e) { return null; }
+}
+function setCached(tabName, data) {
+  cache[tabName] = data;
+  try {
+    localStorage.setItem(`vc_${CACHE_VERSION}_${tabName}`, JSON.stringify({ ts: Date.now(), data }));
+  } catch (e) { /* quota exceeded — in-memory cache still works */ }
+}
+async function fetchTab(tabName, forceRefresh = false) {
+  if (!forceRefresh) {
+    const hit = getCached(tabName);
+    if (hit) return hit;
+  }
+  const res = await fetch(`${BASE}/${tabName}`);
+  const data = await res.json();
+  setCached(tabName, data);
+  return data;
+}
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 // ── TAB CONFIG ──
 const tabConfig = {
   'Mohali': {
@@ -342,10 +456,31 @@ const tabConfig = {
     keys:    ['Sr. No.', "Hon'ble Judge Name", 'Court Room NO', 'ROSTER Detail', 'VC Link For ZOOM', 'Meeting ID', 'Judges Not Holding Court', 'Distribution Court NO'],
     linkCols: ['VC Link For ZOOM'],
     filterEmpty: "Hon'ble Judge Name"
+  },
+  'Punjab Consumer': {
+    title: '🛡️ Punjab Consumer Court',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Password ( If Required )'],
+    linkCols: ['VC Link ( Cisco WebX Meeting )'],
+    filterEmpty: 'Name of Court'
+  },
+  'Chandigarh Consumer': {
+    title: '🛡️ Chandigarh Consumer Court',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (WebEx / Google Meet)', 'Meeting ID', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link (WebEx / Google Meet)', 'Meeting ID', 'Password (If Required)'],
+    linkCols: ['VC Link (WebEx / Google Meet)'],
+    filterEmpty: 'Name of Court'
+  },
+  'Rera Punjab': {
+    title: '🏢 RERA Punjab',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Meeting ID', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Meeting ID', 'Password ( If Required )'],
+    linkCols: ['VC Link ( Cisco WebX Meeting )'],
+    filterEmpty: 'Name of Court'
   }
 };
 // ── LOAD TAB ──
-async function loadTab(tabName) {
+async function loadTab(tabName, forceRefresh = false) {
   currentTab = tabName;
   const config = tabConfig[tabName];
   document.getElementById('categories').style.display = 'none';
@@ -353,14 +488,14 @@ async function loadTab(tabName) {
   document.getElementById('categoryTitle').innerText = config.title;
   document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Loading data...</div>';
   try {
-    if (!cache[tabName]) {
-      const res = await fetch(`${BASE}/${tabName}`);
-      cache[tabName] = await res.json();
-    }
-    renderTable(cache[tabName], config);
+    const data = await fetchTab(tabName, forceRefresh);
+    renderTable(data, config);
   } catch(e) {
     document.getElementById('dataList').innerHTML = '<p class="error">❌ Failed to load data. Please try again.</p>';
   }
+}
+function refreshCurrentTab() {
+  if (currentTab) loadTab(currentTab, true);
 }
 // ── RENDER TABLE ──
 function renderTable(data, config, highlight = '') {
@@ -384,6 +519,7 @@ function renderTable(data, config, highlight = '') {
     return `<tr>${cells}</tr>`;
   }).join('');
   document.getElementById('dataList').innerHTML = `
+    <p class="scroll-hint"><span class="arrow left">❮</span><span>Swipe Left / Right to view all columns</span><span class="arrow right">❯</span></p>
     <div class="table-wrapper">
       <table>
         <thead><tr>${thead}</tr></thead>
@@ -392,30 +528,35 @@ function renderTable(data, config, highlight = '') {
     </div>
   `;
 }
-// ── SEARCH ──
+// ── SEARCH (debounced) ──
+let searchTimer = null;
 document.getElementById('search').addEventListener('input', function() {
-  const val = this.value.trim().toLowerCase();
+  clearTimeout(searchTimer);
+  const raw = this.value;
+  searchTimer = setTimeout(() => runSearch(raw), 300);
+});
+async function runSearch(raw) {
+  const val = raw.trim().toLowerCase();
   if (!val) {
     goBack();
     return;
   }
   document.getElementById('categories').style.display = 'none';
   document.getElementById('dataSection').style.display = 'block';
-  document.getElementById('categoryTitle').innerText = `🔍 Search: "${this.value}"`;
-  Promise.all(
-    Object.entries(tabConfig).map(async ([tabName, config]) => {
-      if (!cache[tabName]) {
-        const res = await fetch(`${BASE}/${tabName}`);
-        cache[tabName] = await res.json();
-      }
-      return cache[tabName]
-        .filter(row => row[config.filterEmpty])
-        .filter(row =>
-          Object.values(row).some(v => v && v.toString().toLowerCase().includes(val))
-        )
-        .map(row => ({ ...row, _tab: config.title, _config: config }));
-    })
-  ).then(results => {
+  document.getElementById('categoryTitle').innerText = `🔍 Search: "${raw}"`;
+  document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Searching...</div>';
+  try {
+    const results = await Promise.all(
+      Object.entries(tabConfig).map(async ([tabName, config]) => {
+        const data = await fetchTab(tabName);
+        return data
+          .filter(row => row[config.filterEmpty])
+          .filter(row =>
+            Object.values(row).some(v => v && v.toString().toLowerCase().includes(val))
+          )
+          .map(row => ({ ...row, _tab: config.title, _config: config }));
+      })
+    );
     const all = results.flat();
     if (!all.length) {
       document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No results found.</p>';
@@ -426,6 +567,7 @@ document.getElementById('search').addEventListener('input', function() {
       if (!grouped[row._tab]) grouped[row._tab] = { rows: [], config: row._config };
       grouped[row._tab].rows.push(row);
     });
+    const safe = escapeRegex(val);
     let html = '';
     for (const [title, { rows, config }] of Object.entries(grouped)) {
       const thead = config.headers.map(h => `<th>${h}</th>`).join('');
@@ -435,13 +577,14 @@ document.getElementById('search').addEventListener('input', function() {
           if (config.linkCols.includes(key) && v.startsWith('http')) {
             return `<td><a class="btn" href="${v}" target="_blank" rel="noopener">🔗 Join</a></td>`;
           }
-          const displayed = v.replace(new RegExp(`(${val})`, 'gi'), '<mark>$1</mark>') || '-';
+          const displayed = v.replace(new RegExp(`(${safe})`, 'gi'), '<mark>$1</mark>') || '-';
           return `<td>${displayed}</td>`;
         }).join('');
         return `<tr>${cells}</tr>`;
       }).join('');
       html += `
         <p style="font-weight:700;margin:16px 0 8px;color:#1e3a8a;">${title}</p>
+        <p class="scroll-hint"><span class="arrow left">❮</span><span>Swipe Left / Right to view all columns</span><span class="arrow right">❯</span></p>
         <div class="table-wrapper" style="margin-bottom:20px;">
           <table>
             <thead><tr>${thead}</tr></thead>
@@ -450,8 +593,10 @@ document.getElementById('search').addEventListener('input', function() {
         </div>`;
     }
     document.getElementById('dataList').innerHTML = html;
-  });
-});
+  } catch (e) {
+    document.getElementById('dataList').innerHTML = '<p class="error">❌ Search failed. Please try again.</p>';
+  }
+}
 // ── BACK ──
 function goBack() {
   document.getElementById('categories').style.display = 'grid';
