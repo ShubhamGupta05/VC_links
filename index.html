@@ -93,6 +93,30 @@ header small { color:#cbd5f5; }
   box-shadow:0 6px 16px rgba(0,0,0,0.08);
   border-color:var(--accent);
 }
+.category.soon {
+  position: relative;
+  cursor: not-allowed;
+  color: #94a3b8;
+  background: #f8fafc;
+  border-style: dashed;
+}
+.category.soon:hover {
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border-color: #cbd5e1;
+}
+.category.soon .soon-badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: #f59e0b;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
 .data-header {
   display:flex;
   align-items:center;
@@ -323,6 +347,13 @@ mark {
     <div class="category" onclick="loadTab('Chandigarh')">🏛️ Chandigarh</div>
     <div class="category" onclick="loadTab('Panchkula')">📋 Panchkula</div>
     <div class="category" onclick="loadTab('highcourt')">🔱 High Court</div>
+    <div class="category" onclick="loadTab('Punjab Consumer')">🛡️ Punjab Consumer</div>
+    <div class="category" onclick="loadTab('Chandigarh Consumer')">🛡️ Chandigarh Consumer</div>
+    <div class="category" onclick="loadTab('Rera Punjab')">🏢 RERA Punjab</div>
+    <div class="category soon" aria-disabled="true">
+      🛡️ Haryana Consumer
+      <div class="soon-badge">Coming Soon</div>
+    </div>
   </div>
   <!-- Data Section -->
   <div id="dataSection" style="display:none;">
@@ -425,6 +456,27 @@ const tabConfig = {
     keys:    ['Sr. No.', "Hon'ble Judge Name", 'Court Room NO', 'ROSTER Detail', 'VC Link For ZOOM', 'Meeting ID', 'Judges Not Holding Court', 'Distribution Court NO'],
     linkCols: ['VC Link For ZOOM'],
     filterEmpty: "Hon'ble Judge Name"
+  },
+  'Punjab Consumer': {
+    title: '🛡️ Punjab Consumer Court',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Password ( If Required )'],
+    linkCols: ['VC Link ( Cisco WebX Meeting )'],
+    filterEmpty: 'Name of Court'
+  },
+  'Chandigarh Consumer': {
+    title: '🛡️ Chandigarh Consumer Court',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (WebEx / Google Meet)', 'Meeting ID', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link (WebEx / Google Meet)', 'Meeting ID', 'Password (If Required)'],
+    linkCols: ['VC Link (WebEx / Google Meet)'],
+    filterEmpty: 'Name of Court'
+  },
+  'Rera Punjab': {
+    title: '🏢 RERA Punjab',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Meeting ID', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Meeting ID', 'Password ( If Required )'],
+    linkCols: ['VC Link ( Cisco WebX Meeting )'],
+    filterEmpty: 'Name of Court'
   }
 };
 // ── LOAD TAB ──
