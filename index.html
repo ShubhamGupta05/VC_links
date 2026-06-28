@@ -350,10 +350,7 @@ mark {
     <div class="category" onclick="loadTab('Punjab Consumer')">🛡️ Punjab Consumer</div>
     <div class="category" onclick="loadTab('Chandigarh Consumer')">🛡️ Chandigarh Consumer</div>
     <div class="category" onclick="loadTab('Rera Punjab')">🏢 RERA Punjab</div>
-    <div class="category soon" aria-disabled="true">
-      🛡️ Haryana Consumer
-      <div class="soon-badge">Coming Soon</div>
-    </div>
+    <div class="category" onclick="loadTab('Haryana Consumer')">🛡️ Haryana Consumer</div>
   </div>
   <!-- Data Section -->
   <div id="dataSection" style="display:none;">
@@ -475,6 +472,13 @@ const tabConfig = {
     title: '🏢 RERA Punjab',
     headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Meeting ID', 'Password'],
     keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Meeting ID', 'Password ( If Required )'],
+    linkCols: ['VC Link ( Cisco WebX Meeting )'],
+    filterEmpty: 'Name of Court'
+  },
+  'Haryana Consumer': {
+    title: '🛡️ Haryana Consumer Court',
+    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Password'],
+    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Password ( If Required )'],
     linkCols: ['VC Link ( Cisco WebX Meeting )'],
     filterEmpty: 'Name of Court'
   }
