@@ -3,611 +3,608 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Court VC Links</title>
+<title>Court VC Links · Punjab &amp; Haryana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
 <style>
-:root {
-  --primary:#0f172a;
-  --accent:#2563eb;
-  --bg:#f1f5f9;
-  --card:#ffffff;
-  --text:#0f172a;
-  --muted:#64748b;
+:root{
+  --ink:#0A1530; --navy:#0B1B40; --navy-2:#102a5c; --navy-3:#16356f;
+  --blue:#1E40AF; --blue-bright:#2B57E6; --blue-soft:#E8EDFB;
+  --red:#E11D2A; --gold:#D4AF37; --gold-2:#b8902c; --gold-soft:#F4E8C4;
+  --bg:#EDF1F7; --card:#FFFFFF; --line:#E3E8F1; --line-2:#EEF1F7;
+  --muted:#566081; --muted-2:#8A93AC; --green:#1E9E5A;
+  --r-lg:20px; --r-md:14px; --r-sm:10px;
+  --sans:"Libre Franklin",system-ui,sans-serif;
+  --serif:"Source Serif 4",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --shadow:0 1px 2px rgba(10,21,48,.04),0 8px 24px -12px rgba(10,21,48,.18);
+  --shadow-lg:0 24px 60px -22px rgba(10,21,48,.42);
+  --maxw:1180px;
 }
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-  background:var(--bg);
-  color:var(--text);
-  padding-top: 42px;
-  padding-bottom: 80px;
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-header {
-  background:var(--primary);
-  color:white;
-  padding:18px 15px;
-  text-align:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+a{color:inherit;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+svg{display:block;}
+.ic{width:1em; height:1em; stroke:currentColor; stroke-width:1.9; fill:none; stroke-linecap:round; stroke-linejoin:round; flex:none;}
+.ic-fill{fill:currentColor; stroke:none;}
+
+/* ============ TOP BAR ============ */
+.topbar{background:var(--navy); color:#fff; position:sticky; top:0; z-index:60;
+  border-bottom:1px solid rgba(255,255,255,.08);}
+.topbar .wrap{display:flex; align-items:center; gap:14px; height:60px;}
+.brand{display:flex; align-items:center; gap:11px; min-width:0;}
+.brand .seal{width:34px;height:34px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 35% 30%,#f2dd9a,var(--gold) 55%,var(--gold-2));
+  display:grid;place-items:center;color:var(--navy);font-size:18px;
+  box-shadow:0 0 0 2px rgba(212,175,55,.35),0 2px 6px rgba(0,0,0,.3);}
+.brand b{font-weight:800; font-size:17px; letter-spacing:-.01em; white-space:nowrap;}
+.brand .sub{font-size:11.5px; color:#aebbd8; font-weight:500; letter-spacing:.02em;}
+.topbar-right{margin-left:auto; display:flex; align-items:center; gap:10px;}
+.cand-chip{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12); padding:5px 12px 5px 6px; border-radius:999px;
+  font-size:12.5px; color:#dbe3f5; transition:.18s; text-decoration:none;}
+.cand-chip:hover{background:rgba(255,255,255,.13);}
+.cand-chip .dot{width:26px;height:26px;border-radius:50%;background:var(--blue-bright);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:11px;font-family:var(--serif);}
+.cand-chip b{color:#fff;font-weight:700;}
+.cand-chip .ctext{white-space:nowrap;}
+@media(max-width:680px){ .brand .sub{display:none;} .cand-chip .ctext{display:none;} .cand-chip{padding:5px;} }
+
+/* ============ HERO (candidate promo) ============ */
+.hero{background:
+   radial-gradient(120% 140% at 88% -10%, rgba(43,87,230,.42), transparent 55%),
+   radial-gradient(90% 120% at 0% 110%, rgba(212,175,55,.12), transparent 50%),
+   linear-gradient(160deg,#0c1f49,#0a1631 70%);
+  color:#fff; position:relative; overflow:hidden;}
+.hero::after{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:100% 46px; opacity:.5; pointer-events:none; mask:linear-gradient(#000,transparent 70%);}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--gold-soft);
+  border:1px solid rgba(212,175,55,.4); background:rgba(212,175,55,.08);
+  padding:6px 13px;border-radius:999px;}
+.vote-line{display:flex;align-items:baseline;gap:14px;margin:20px 0 4px;flex-wrap:wrap;}
+.vote-tag{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.32em;
+  text-transform:uppercase;color:#9fb2dc;}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,6vw,68px);
+  line-height:.98;margin:0;letter-spacing:-.02em;}
+.role{margin-top:14px;font-size:clamp(15px,2vw,19px);color:#c7d2ea;font-weight:500;}
+.role b{color:#fff;font-weight:700;}
+.promises{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px;}
+.promises span{font-size:13px;font-weight:600;color:#dbe3f5;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:24px;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:14.5px;
+  padding:12px 18px;border-radius:11px;transition:.18s;text-decoration:none;border:1px solid transparent;}
+.btn .ic{font-size:17px;}
+.btn-gold{background:linear-gradient(180deg,#e9cf73,var(--gold));color:#3a2c06;
+  box-shadow:0 6px 18px -6px rgba(212,175,55,.6);}
+.btn-gold:hover{filter:brightness(1.06);transform:translateY(-1px);}
+.btn-wa{background:#1faf54;color:#fff;}
+.btn-wa:hover{background:#188f44;transform:translateY(-1px);}
+.btn-ghost-light{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2);}
+.btn-ghost-light:hover{background:rgba(255,255,255,.16);}
+.date-badge{display:inline-flex;align-items:center;gap:10px;margin-left:2px;
+  font-size:13px;color:#cdd8ef;}
+.date-badge .d{display:block;font-family:var(--serif);font-weight:700;font-size:18px;color:#fff;line-height:1.15;}
+.date-badge .l{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;}
+
+/* ============ TOOL SECTION ============ */
+.tool{padding:30px 0 60px;}
+.tool-head{text-align:center;max-width:640px;margin:0 auto 22px;}
+.tool-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(24px,3.4vw,34px);
+  margin:0 0 6px;letter-spacing:-.02em;color:var(--ink);}
+.tool-head p{margin:0;color:var(--muted);font-size:15px;}
+.searchbar{position:sticky;top:60px;z-index:40;padding:14px 0 6px;background:
+   linear-gradient(var(--bg) 70%,transparent);}
+.search{position:relative;max-width:680px;margin:0 auto;}
+.search .ic{position:absolute;left:6px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--muted-2);}
+.search input{width:100%;font-family:inherit;font-size:16px;color:var(--ink);
+  padding:16px 18px 16px 50px;border-radius:14px;border:1.5px solid var(--line);
+  background:var(--card);box-shadow:var(--shadow);transition:.18s;}
+.search input:focus{outline:none;border-color:var(--blue-bright);
+  box-shadow:0 0 0 4px rgba(43,87,230,.13),var(--shadow);}
+.search .clearx{position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  width:30px;height:30px;border-radius:50%;display:none;place-items:center;color:var(--muted);
+  background:var(--line-2);font-size:16px;}
+.search.has-val .clearx{display:grid;}
+
+.section-label{display:flex;align-items:center;gap:10px;margin:26px 4px 12px;
+  font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.section-label .ic{font-size:16px;color:var(--blue);}
+.section-label::after{content:"";flex:1;height:1px;background:var(--line);}
+
+/* recents / favorites chips */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 4px;}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;
+  background:var(--card);border:1.5px solid var(--line);font-size:13.5px;font-weight:600;
+  color:var(--ink);transition:.16s;box-shadow:0 1px 2px rgba(10,21,48,.04);}
+.chip:hover{border-color:var(--blue-bright);color:var(--blue);transform:translateY(-1px);}
+.chip .ic{font-size:15px;color:var(--muted-2);}
+.chip.star .ic{color:var(--gold-2);}
+
+/* advocate tools row */
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;}
+.tool-tile{display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+  background:var(--card);border:1.5px solid var(--line);border-radius:var(--r-md);
+  padding:16px 18px;box-shadow:var(--shadow);transition:.18s;text-decoration:none;color:var(--ink);}
+.tool-tile:hover{transform:translateY(-3px);border-color:var(--blue-bright);
+  box-shadow:0 18px 40px -20px rgba(30,64,175,.4);}
+.tool-tile .tt-ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;
+  font-size:24px;flex:none;border:1px solid var(--line);}
+.tt-ic.ic-blue{background:linear-gradient(160deg,var(--blue-soft),#fff);color:var(--blue);}
+.tt-ic.ic-navy{background:linear-gradient(160deg,#dfe6f5,#fff);color:var(--navy);}
+.tt-ic.ic-gold{background:linear-gradient(160deg,var(--gold-soft),#fff);color:var(--gold-2);}
+.tool-tile .tt-body{min-width:0;flex:1;}
+.tool-tile .tt-body b{display:block;font-size:15.5px;font-weight:700;letter-spacing:-.01em;line-height:1.2;}
+.tool-tile .tt-body span{display:block;font-size:12.5px;color:var(--muted);font-weight:500;margin-top:3px;line-height:1.3;}
+.tool-tile .tt-ext{font-size:18px;color:var(--muted-2);flex:none;}
+.tool-tile:hover .tt-ext{color:var(--blue);}
+.tool-tile.locked{opacity:.55;cursor:not-allowed;filter:grayscale(.6);}
+.tool-tile.locked:hover{transform:none;border-color:var(--line);box-shadow:var(--shadow);}
+.tool-tile.locked:hover .tt-ext{color:var(--muted-2);}
+@media(max-width:760px){ .tools-row{grid-template-columns:1fr;} }
+
+/* court grid */
+.court-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;}
+.court-card{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r-md);
+  padding:18px;text-align:left;transition:.18s;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;gap:14px;min-height:128px;}
+.court-card:not(.soon):hover{transform:translateY(-3px);border-color:var(--blue-bright);
+  box-shadow:0 18px 40px -20px rgba(30,64,175,.4);}
+.court-card .topbar-row{display:flex;align-items:flex-start;justify-content:space-between;}
+.court-card .cicon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(160deg,var(--blue-soft),#fff);color:var(--blue);font-size:24px;
+  border:1px solid var(--line);}
+.court-card .fav{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  color:var(--muted-2);font-size:18px;transition:.15s;}
+.court-card .fav:hover{background:var(--line-2);color:var(--gold-2);}
+.court-card .fav.on{color:var(--gold-2);}
+.court-card h3{margin:0;font-size:16.5px;font-weight:700;letter-spacing:-.01em;line-height:1.2;}
+.court-card .meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);font-weight:600;}
+.court-card .meta .pill{background:var(--line-2);padding:2px 9px;border-radius:999px;color:var(--muted);}
+.court-card .go{margin-top:auto;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);}
+.court-card.soon{opacity:.72;border-style:dashed;cursor:default;background:#f8fafd;}
+.court-card.soon .cicon{filter:grayscale(.5);opacity:.7;}
+.soon-badge{font-size:10px;font-weight:800;letter-spacing:.08em;background:var(--gold-soft);
+  color:var(--gold-2);padding:3px 9px;border-radius:999px;text-transform:uppercase;}
+
+/* ============ COURT DETAIL VIEW ============ */
+.detail-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 4px;}
+.btn-back{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;
+  padding:10px 15px;border-radius:11px;background:var(--card);border:1.5px solid var(--line);
+  color:var(--ink);box-shadow:var(--shadow);transition:.16s;}
+.btn-back:hover{border-color:var(--blue-bright);color:var(--blue);}
+.detail-title{display:flex;align-items:center;gap:13px;}
+.detail-title .cicon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(160deg,var(--blue-soft),#fff);color:var(--blue);font-size:25px;border:1px solid var(--line);}
+.detail-title h2{margin:0;font-family:var(--serif);font-weight:700;font-size:clamp(20px,3vw,28px);letter-spacing:-.01em;}
+.detail-title .meta{font-size:13px;color:var(--muted);font-weight:600;}
+.detail-actions{margin-left:auto;display:flex;gap:9px;}
+.btn-soft{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13.5px;
+  padding:10px 14px;border-radius:11px;background:var(--card);border:1.5px solid var(--line);
+  color:var(--ink);transition:.16s;box-shadow:var(--shadow);}
+.btn-soft:hover{border-color:var(--blue-bright);color:var(--blue);}
+.btn-soft.on{color:var(--gold-2);border-color:var(--gold);}
+
+/* table (desktop) */
+.table-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+  box-shadow:var(--shadow);overflow:hidden;margin-top:16px;}
+.vc-table{width:100%;border-collapse:collapse;}
+.vc-table thead th{background:var(--navy);color:#dfe6f5;font-size:11.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;padding:13px 14px;text-align:left;white-space:nowrap;position:sticky;top:106px;z-index:5;}
+.vc-table thead th:first-child{text-align:center;width:54px;}
+.vc-table tbody tr{border-top:1px solid var(--line-2);transition:background .12s;}
+.vc-table tbody tr:nth-child(even){background:#fafbfe;}
+.vc-table tbody tr:hover{background:var(--blue-soft);}
+.vc-table td{padding:13px 14px;vertical-align:middle;font-size:14px;}
+.vc-table td.sr{text-align:center;font-weight:700;color:var(--muted-2);font-family:var(--mono);font-size:13px;}
+.vc-table td.cname{font-weight:600;line-height:1.3;min-width:200px;max-width:280px;}
+.vc-table td.cname small{display:block;color:var(--muted);font-weight:500;font-size:12px;margin-top:2px;}
+
+.join{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13px;
+  padding:8px 13px;border-radius:9px;color:#fff;transition:.15s;white-space:nowrap;text-decoration:none;border:none;}
+.join .ic{font-size:15px;}
+.join:hover{transform:translateY(-1px);filter:brightness(1.05);}
+.join-meet{background:linear-gradient(180deg,#2f7d4f,#1f8a4d);}
+.join-zoom{background:linear-gradient(180deg,#2b7bf0,#1f6fe0);}
+.join-bvc{background:linear-gradient(180deg,#5b3fc4,#4a2fb0);}
+.join[disabled],.join.dis{background:var(--line);color:var(--muted-2);pointer-events:none;cursor:default;box-shadow:none;}
+.idcell{display:flex;flex-direction:column;gap:7px;}
+.id-row{display:flex;align-items:center;gap:8px;}
+.id-row .lbl{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);width:34px;flex:none;}
+.code{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+.copy{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;color:var(--muted-2);
+  background:var(--line-2);font-size:14px;transition:.14s;flex:none;}
+.copy:hover{background:var(--blue-soft);color:var(--blue);}
+.copy.done{background:#dff3e6;color:var(--green);}
+.dash{color:var(--muted-2);font-weight:600;}
+
+/* mobile cards */
+.vc-cards{display:none;flex-direction:column;gap:13px;margin-top:16px;}
+.vc-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+  box-shadow:var(--shadow);overflow:hidden;}
+.vc-card .vc-card-head{display:flex;align-items:flex-start;gap:11px;padding:15px 16px;border-bottom:1px solid var(--line-2);}
+.vc-card .num{width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;
+  display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600;flex:none;}
+.vc-card .vc-card-head b{font-size:15.5px;font-weight:700;line-height:1.25;}
+.vc-card .plat{padding:13px 16px;border-top:1px solid var(--line-2);}
+.vc-card .plat:first-of-type{border-top:none;}
+.plat-top{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.plat-name{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;}
+.plat-name .dotc{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:15px;flex:none;}
+.dotc.m{background:#1f8a4d;} .dotc.z{background:#1f6fe0;} .dotc.b{background:#4a2fb0;}
+.plat-codes{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px;}
+.codepill{display:flex;align-items:center;gap:8px;background:var(--line-2);border-radius:9px;padding:7px 9px 7px 11px;}
+.codepill .lbl{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);}
+
+.empty{text-align:center;padding:60px 20px;color:var(--muted);}
+.empty .big{font-size:34px;margin-bottom:10px;}
+.no-results{display:none;}
+
+/* ============ FOOTER candidate bar ============ */
+.support{background:linear-gradient(160deg,#0c1f49,#0a1631);color:#fff;margin-top:10px;}
+.support .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;padding:30px 20px;}
+.support .who{display:flex;align-items:center;gap:15px;}
+.support .who image-slot,.support .who .ph{width:60px;height:60px;border-radius:14px;flex:none;
+  background:linear-gradient(160deg,#e9eef9,#cfd9ee);box-shadow:0 0 0 2px rgba(212,175,55,.4);}
+.support .who b{font-family:var(--serif);font-weight:700;font-size:19px;display:block;line-height:1.1;}
+.support .who span{font-size:13px;color:#b9c5e0;font-weight:500;}
+.support .promises-f{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.support .promises-f span{font-size:12.5px;color:#dbe3f5;display:flex;align-items:center;gap:6px;}
+.support .promises-f .ic{color:var(--gold);font-size:14px;}
+.support .acts{display:flex;gap:10px;}
+@media(max-width:860px){
+  .support .wrap{grid-template-columns:1fr;text-align:center;gap:18px;}
+  .support .who{flex-direction:column;justify-content:center;align-items:center;gap:10px;}
+  .support .acts{justify-content:center;}
 }
-header h3 { margin:0; font-size:18px; }
-header small { color:#cbd5f5; }
-/* ── STICKY MARQUEE BANNER ── */
-.banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: linear-gradient(90deg, #1e3a8a, #2563eb, #1e3a8a);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 10px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+.foot-credit{background:var(--navy);color:#8794b4;font-size:12px;text-align:center;padding:14px 20px;
+  border-top:1px solid rgba(255,255,255,.07);}
+.foot-credit a{color:#b9c5e0;text-decoration:none;font-weight:600;}
+
+/* mobile sticky call bar */
+.mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding:9px 12px;
+  gap:9px;box-shadow:0 -10px 30px -10px rgba(0,0,0,.4);}
+.mobile-bar .btn{flex:1;justify-content:center;padding:13px;}
+
+/* ===== fee calculator modal ===== */
+.modal-overlay{position:fixed;inset:0;z-index:95;background:rgba(8,15,33,.55);
+  backdrop-filter:blur(3px);display:none;align-items:flex-end;justify-content:center;padding:0;}
+.modal-overlay.show{display:flex;}
+@media(min-width:640px){ .modal-overlay{align-items:center;padding:20px;} }
+.modal{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;
+  box-shadow:var(--shadow-lg);overflow:hidden;animation:sheet .26s cubic-bezier(.2,.8,.2,1);max-height:94vh;display:flex;flex-direction:column;}
+@media(min-width:640px){ .modal{border-radius:20px;} }
+@keyframes sheet{from{transform:translateY(40px);opacity:.4;}to{transform:translateY(0);opacity:1;}}
+.modal-head{background:linear-gradient(160deg,#0c1f49,#0a1631);color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px;}
+.modal-head .mh-ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(160deg,#e9cf73,var(--gold));color:#3a2c06;font-size:21px;}
+.modal-head b{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.1;display:block;}
+.modal-head span{font-size:12px;color:#aebbd8;font-weight:500;}
+.modal-head .x{margin-left:auto;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  color:#cdd8ef;background:rgba(255,255,255,.1);font-size:18px;transition:.15s;}
+.modal-head .x:hover{background:rgba(255,255,255,.2);color:#fff;}
+.modal-body{padding:20px;overflow-y:auto;}
+.fld{margin-bottom:16px;}
+.fld label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:7px;letter-spacing:.02em;}
+.fld .inp{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;background:#fafbfe;
+  overflow:hidden;transition:.16s;}
+.fld .inp:focus-within{border-color:var(--blue-bright);box-shadow:0 0 0 4px rgba(43,87,230,.12);}
+.fld .inp .pre{padding:0 4px 0 14px;font-weight:700;color:var(--muted);font-size:16px;}
+.fld .inp input{flex:1;border:none;background:none;outline:none;font-family:inherit;font-size:17px;
+  font-weight:600;color:var(--ink);padding:13px 14px 13px 6px;min-width:0;width:100%;}
+.fld .inp .suf{padding:0 14px;font-weight:600;color:var(--muted);font-size:14px;white-space:nowrap;}
+.fld .hint{font-size:11.5px;color:var(--muted-2);margin-top:6px;}
+.seg{display:flex;gap:8px;flex-wrap:wrap;}
+.seg button{flex:1;min-width:84px;padding:11px 10px;border-radius:11px;border:1.5px solid var(--line);
+  background:#fafbfe;font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);transition:.15s;}
+.seg button.on{border-color:var(--blue-bright);background:var(--blue-soft);color:var(--blue);}
+.result{background:linear-gradient(160deg,var(--blue-soft),#f3f6fe);border:1.5px solid #d4ddf6;
+  border-radius:14px;padding:18px;margin-top:4px;}
+.result .rl{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.result .rv{font-family:var(--serif);font-weight:700;font-size:34px;color:var(--navy);line-height:1.05;margin:5px 0 3px;display:flex;align-items:center;gap:10px;}
+.result .rv .copy{width:32px;height:32px;font-size:15px;}
+.result .words{font-size:13px;color:var(--muted);font-weight:600;text-transform:capitalize;}
+.disclaimer{display:flex;gap:9px;font-size:11.5px;color:var(--muted);background:var(--gold-soft);
+  border:1px solid #ecd9a0;border-radius:11px;padding:11px 13px;margin-top:16px;line-height:1.45;}
+.disclaimer .ic{color:var(--gold-2);font-size:16px;flex:none;margin-top:1px;}
+/* ===== fee calculator modal end ===== */
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;
+  box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.25s;z-index:90;display:flex;align-items:center;gap:9px;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast .ic{color:#6ee7a0;font-size:18px;}
+
+@media(max-width:760px){
+  .vc-table{display:none;} .vc-cards{display:flex;}
+  body{padding-bottom:calc(74px + env(safe-area-inset-bottom));overflow-x:hidden;}
+  .mobile-bar{display:flex;padding-bottom:calc(9px + env(safe-area-inset-bottom));}
+  .detail-actions{margin-left:0;width:100%;flex-wrap:wrap;gap:8px;}
+  .detail-actions .btn-soft{flex:1;justify-content:center;padding:10px 7px;gap:6px;font-size:13px;}
+  .detail-head{gap:10px;}
+  .detail-head .btn-back{order:-1;}
+
+  .eyebrow{font-size:10.5px;padding:5px 11px;}
+  .hero h1{font-size:clamp(34px,11vw,46px);}
+  .hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+  .hero-cta .btn{width:100%;justify-content:center;padding:13px 12px;}
+  .hero-copy .promises{display:none;}
+  .hero-cta #heroCall,.hero-cta #heroWa{display:none;}
+  .hero-cta .btn-ghost-light{grid-column:1 / -1;}
+  .date-badge{grid-column:1 / -1;justify-content:center;margin:2px 0 0;}
+
+  .tool{padding:22px 0 50px;}
+  .tool-head h2{font-size:23px;}
+  .court-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .court-card{padding:14px;gap:10px;min-height:0;}
+  .court-card .cicon{width:40px;height:40px;font-size:21px;border-radius:11px;}
+  .court-card .fav{width:30px;height:30px;font-size:16px;}
+  .court-card h3{font-size:14.5px;}
+  .court-card .meta{font-size:11.5px;gap:6px;flex-wrap:wrap;}
+  .court-card .go{font-size:12px;}
+  .section-label{margin:22px 2px 11px;font-size:11.5px;}
+
+  .vc-card .vc-card-head{padding:14px 15px;}
+  .vc-card .plat{padding:13px 15px;}
+  .vc-card .join{min-width:100px;justify-content:center;padding:11px 16px;font-size:13.5px;}
+  .plat-name{font-size:13.5px;}
 }
-.banner .marquee-track {
-  display: inline-block;
-  animation: marquee 20s linear infinite;
+@media(max-width:380px){
+  .court-grid{grid-template-columns:1fr;}
+  .hero-cta{grid-template-columns:1fr;}
+  .hero-cta .btn-ghost-light{grid-column:auto;}
 }
-.banner .marquee-track:hover {
-  animation-play-state: paused;
+.hidden{display:none !important;}
+
+/* ===== live-data + full-poster hero overrides ===== */
+.hero .hero-grid{display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:38px;
+  align-items:center;position:relative;z-index:2;padding-top:40px;padding-bottom:42px;}
+.poster-card{border-radius:18px;overflow:hidden;border:3px solid rgba(212,175,55,.55);
+  box-shadow:var(--shadow-lg);background:#0a1631;line-height:0;}
+.poster-card img{width:100%;height:auto;display:block;}
+@media(max-width:860px){
+  .hero .hero-grid{grid-template-columns:1fr;gap:22px;padding-top:26px;padding-bottom:30px;}
+  .poster-card{order:2;max-width:330px;margin:0 auto;}
+  .hero-copy{text-align:center;}
+  .hero-copy .vote-line,.hero-copy .promises,.hero-copy .hero-cta{justify-content:center;}
 }
-@keyframes marquee {
-  0%   { transform: translateX(100vw); }
-  100% { transform: translateX(-100%); }
-}
-.container {
-  max-width:960px;
-  margin:auto;
-  padding:20px 15px;
-}
-.search-box input {
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid #e2e8f0;
-  background:white;
-  font-size:14px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
-  gap:14px;
-  margin-top:15px;
-}
-.category {
-  background:var(--card);
-  padding:18px;
-  border-radius:14px;
-  text-align:center;
-  cursor:pointer;
-  font-weight:600;
-  transition:all .2s ease;
-  border:1px solid #e2e8f0;
-}
-.category:hover {
-  transform:translateY(-4px);
-  box-shadow:0 6px 16px rgba(0,0,0,0.08);
-  border-color:var(--accent);
-}
-.category.soon {
-  position: relative;
-  cursor: not-allowed;
-  color: #94a3b8;
-  background: #f8fafc;
-  border-style: dashed;
-}
-.category.soon:hover {
-  transform: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  border-color: #cbd5e1;
-}
-.category.soon .soon-badge {
-  display: inline-block;
-  margin-top: 6px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #ffffff;
-  background: #f59e0b;
-  padding: 2px 8px;
-  border-radius: 999px;
-  text-transform: uppercase;
-}
-.data-header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:16px;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.back-btn {
-  padding:8px 12px;
-  background:#e2e8f0;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:13px;
-}
-/* TABLE STYLES */
-.table-wrapper {
-  overflow-x:auto;
-  border-radius:12px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.07);
-  /* Scroll-shadow pattern: edge gradients reveal more content exists to the side.
-     They auto-shrink as the user scrolls toward that edge. */
-  background:
-    linear-gradient(to right, #ffffff 30%, rgba(255,255,255,0)) 0 0,
-    linear-gradient(to right, rgba(255,255,255,0), #ffffff 70%) 100% 0,
-    radial-gradient(farthest-side at 0 50%, rgba(37,99,235,0.25), rgba(0,0,0,0)) 0 0,
-    radial-gradient(farthest-side at 100% 50%, rgba(37,99,235,0.25), rgba(0,0,0,0)) 100% 0;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-  background-attachment: local, local, scroll, scroll;
-  scrollbar-width: thin;
-}
-.table-wrapper::-webkit-scrollbar { height: 8px; }
-.table-wrapper::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 0 0 12px 12px; }
-.table-wrapper::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
-.table-wrapper::-webkit-scrollbar-thumb:hover { background: #64748b; }
-.scroll-hint {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  color: #ffffff;
-  text-align: center;
-  margin: 0 0 10px;
-  padding: 9px 14px;
-  background: linear-gradient(90deg, #2563eb, #1e3a8a);
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.25);
-}
-.scroll-hint .arrow {
-  display: inline-block;
-  font-size: 14px;
-  line-height: 1;
-  color: #bfdbfe;
-}
-.scroll-hint .arrow.left  { animation: nudgeLeft  1.4s ease-in-out infinite; }
-.scroll-hint .arrow.right { animation: nudgeRight 1.4s ease-in-out infinite; }
-@keyframes nudgeLeft {
-  0%,100% { transform: translateX(0);    opacity: 0.6; }
-  50%     { transform: translateX(-4px); opacity: 1;   }
-}
-@keyframes nudgeRight {
-  0%,100% { transform: translateX(0);    opacity: 0.6; }
-  50%     { transform: translateX(4px);  opacity: 1;   }
-}
-@media(max-width:760px) { .scroll-hint { display: flex; } }
-table {
-  width:100%;
-  border-collapse:collapse;
-  font-size:13px;
-}
-thead tr {
-  background:var(--primary);
-  color:white;
-}
-thead th {
-  padding:12px 14px;
-  text-align:left;
-  font-weight:600;
-  white-space:nowrap;
-}
-tbody tr:nth-child(even) { background:#f8fafc; }
-tbody tr:hover { background:#eff6ff; }
-tbody td {
-  padding:10px 14px;
-  border-bottom:1px solid #e2e8f0;
-  vertical-align:top;
-  line-height:1.5;
-}
-tbody td:first-child {
-  text-align:center;
-  font-weight:600;
-  color:var(--muted);
-  width:48px;
-}
-.btn {
-  padding:7px 12px;
-  background:var(--accent);
-  color:white;
-  border-radius:8px;
-  text-decoration:none;
-  font-size:12px;
-  font-weight:500;
-  transition:.2s;
-  white-space:nowrap;
-  display:inline-block;
-}
-.btn:hover { background:#1d4ed8; }
-.loading {
-  text-align:center;
-  padding:40px;
-  color:var(--muted);
-  font-size:14px;
-}
-.error { color:red; text-align:center; margin-top:20px; }
-mark {
-  background:#fef08a;
-  border-radius:3px;
-  padding:0 2px;
-}
-/* ── FIXED BOTTOM PROMO BAR ── */
-.promo-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: linear-gradient(90deg, #0f172a, #1e3a8a, #0f172a);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
-}
-.promo-bar img {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  border: 2px solid #60a5fa;
-  flex-shrink: 0;
-}
-.promo-bar .promo-info { flex: 1; min-width: 0; }
-.promo-bar .promo-info strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.promo-bar .promo-info span {
-  font-size: 11px;
-  color: #93c5fd;
-}
-.promo-bar .promo-points {
-  display: flex;
-  gap: 10px;
-  font-size: 11px;
-  color: #bfdbfe;
-}
-.promo-bar .promo-points span::before { content: "✔ "; }
-@media(max-width:600px) {
-  .promo-bar .promo-points { display: none; }
-  thead th { font-size:12px; padding:10px 8px; }
-  tbody td { font-size:12px; padding:8px; }
-}
-.promo-bar .btn-call {
-  background: #16a34a;
-  color: #fff;
-  border: none;
-  padding: 7px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  text-decoration: none;
-  display: inline-block;
-  flex-shrink: 0;
-}
-.promo-bar .btn-call:hover { background: #15803d; }
-/* ── ELECTION POSTER CARD ── */
-.election-poster {
-  max-width: 480px;
-  margin: 30px auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-.election-poster img {
-  width: 100%;
-  display: block;
-}
+.support .who .ph{object-fit:cover;object-position:50% 16%;}
+.join-webex{background:linear-gradient(180deg,#16a0b5,#0e8499);}
+.dotc.w{background:#0e8499;}
+.table-card{overflow:auto;}
+.vc-table thead th{position:static;}
+.vc-table .id-row .lbl{width:auto;min-width:34px;white-space:nowrap;}
+.vc-table td .xrow{font-size:12.5px;color:var(--muted);margin-bottom:4px;line-height:1.35;}
+.vc-table td .xrow:last-child{margin-bottom:0;}
+.vc-table td .xrow .xl{display:inline-block;font-weight:700;color:var(--muted-2);
+  text-transform:uppercase;font-size:10px;letter-spacing:.04em;margin-right:6px;}
+.court-badge{margin-left:auto;font-size:11px;font-weight:700;color:var(--blue);
+  background:var(--blue-soft);padding:4px 10px;border-radius:999px;white-space:nowrap;}
 </style>
 </head>
 <body>
-<header>
-  <h3>⚖️ Court VC Links</h3>
-  <small>Quick access for Advocates</small>
-</header>
-<!-- STICKY MARQUEE BANNER -->
-<div class="banner">
-  <div class="marquee-track">
-    🗳️ Vote for Advocate Prateek Garg — Candidate For Treasurer &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    Experienced · Trusted · Dedicated to the Bar &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    Your Vote Makes a Difference! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    📞 +91 88948 31016 &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    🗳️ Vote for Advocate Prateek Garg — Candidate For Treasurer &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    Experienced · Trusted · Dedicated to the Bar &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    Your Vote Makes a Difference! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-    📞 +91 88948 31016 &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;
-  </div>
-</div>
-<div class="container">
-  <div class="search-box">
-    <input type="text" id="search" placeholder="Search court or judge name..." />
-  </div>
-  <!-- Category Cards -->
-  <div id="categories" class="grid">
-    <div class="category" onclick="loadTab('Mohali')">⚖️ Mohali</div>
-    <div class="category" onclick="loadTab('Chandigarh')">🏛️ Chandigarh</div>
-    <div class="category" onclick="loadTab('Panchkula')">📋 Panchkula</div>
-    <div class="category" onclick="loadTab('highcourt')">🔱 High Court</div>
-    <div class="category" onclick="loadTab('Punjab Consumer')">🛡️ Punjab Consumer</div>
-    <div class="category" onclick="loadTab('Chandigarh Consumer')">🛡️ Chandigarh Consumer</div>
-    <div class="category" onclick="loadTab('Rera Punjab')">🏢 RERA Punjab</div>
-    <div class="category" onclick="loadTab('Haryana Consumer')">🛡️ Haryana Consumer</div>
-  </div>
-  <!-- Data Section -->
-  <div id="dataSection" style="display:none;">
-    <div class="data-header">
-      <div class="back-btn" onclick="goBack()">⬅ Back</div>
-      <h3 id="categoryTitle"></h3>
-      <div class="back-btn" onclick="refreshCurrentTab()" title="Fetch the latest data from the sheet">🔄 Refresh</div>
-    </div>
-    <div id="dataList"></div>
-  </div>
-  <div id="error" class="error"></div>
-  <!-- ELECTION POSTER -->
-  <div class="election-poster">
-    <img src="img/election-poster.png" alt="Vote Prateek Garg — Candidate for Treasurer, Election 15th May 2026" />
-  </div>
-</div>
-<!-- FIXED BOTTOM PROMO BAR -->
-<div class="promo-bar">
-  <img
-    src="img/profile.jpg"
-    alt="Prateek Garg"
-    onerror="this.src='https://ui-avatars.com/api/?name=Prateek+Garg&background=2563eb&color=fff&size=96'"
-  />
-  <div class="promo-info">
-    <strong>Advocate Prateek Garg</strong>
-    <span>Candidate for Treasurer — Bar Association</span>
-  </div>
-  <div class="promo-points">
-    <span>Transparent Accounts</span>
-    <span>Digital Court Support</span>
-    <span>Faster Advocate Services</span>
-  </div>
-  <a class="btn-call" href="tel:+918894831016">📞 Call</a>
-</div>
-<script>
-const SHEET_ID = '15ILqRbBU5d0RpJNurwxAKIT7OcBQ-dM5h8c54SosPM8';
-const BASE = `https://opensheet.elk.sh/${SHEET_ID}`;
-const CACHE_TTL = 3 * 24 * 60 * 60 * 1000; // 3 days
-const CACHE_VERSION = 'v1'; // bump this string when sheet structure changes to invalidate user caches
-let cache = {};
-let currentTab = '';
 
-// ── PERSISTENT CACHE (localStorage + TTL) ──
-function getCached(tabName) {
-  if (cache[tabName]) return cache[tabName];
-  try {
-    const raw = localStorage.getItem(`vc_${CACHE_VERSION}_${tabName}`);
-    if (!raw) return null;
-    const { ts, data } = JSON.parse(raw);
-    if (Date.now() - ts > CACHE_TTL) return null;
-    cache[tabName] = data;
-    return data;
-  } catch (e) { return null; }
-}
-function setCached(tabName, data) {
-  cache[tabName] = data;
-  try {
-    localStorage.setItem(`vc_${CACHE_VERSION}_${tabName}`, JSON.stringify({ ts: Date.now(), data }));
-  } catch (e) { /* quota exceeded — in-memory cache still works */ }
-}
-async function fetchTab(tabName, forceRefresh = false) {
-  if (!forceRefresh) {
-    const hit = getCached(tabName);
-    if (hit) return hit;
-  }
-  const res = await fetch(`${BASE}/${tabName}`);
-  const data = await res.json();
-  setCached(tabName, data);
-  return data;
-}
-function escapeRegex(s) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-// ── TAB CONFIG ──
-const tabConfig = {
-  'Mohali': {
-    title: '⚖️ Mohali District Courts',
-    headers: ['Sr. No.', 'Name of Judicial Officer', 'VC Link (Google Meet)', 'Reader Contact Details', 'Naib Court Contact Details', 'Court Room Number'],
-    keys:    ['Sr. No.', 'Name of Judicial Officer', 'VC Link (Google Meet)', 'Reader Contact Details', 'Naib Court Contact Details', 'Court Room Number'],
-    linkCols: ['VC Link (Google Meet)'],
-    filterEmpty: 'VC Link (Google Meet)'
-  },
-  'Chandigarh': {
-    title: '🏛️ Chandigarh District Courts',
-    headers: ['Sr. No.', 'Name of Court', 'Google Meet', 'Zoom Link', 'Zoom Meeting ID', 'Zoom Passcode', 'BharatVC Link', 'BharatVC Meeting ID', 'BharatVC PWD', 'Reader Name', 'Contact'],
-    keys:    ['Sr. No.', 'Name of Court', 'Google Meet Link', 'Zoom Link', 'Zoom Meeting ID', 'Zoom Passcode', 'BharatVC Link', 'BharatVC Meeting ID', 'BharatVC PWD', 'Name Of Reader', 'Contact Number'],
-    linkCols: ['Google Meet Link', 'Zoom Link', 'BharatVC Link'],
-    filterEmpty: 'Name of Court'
-  },
-  'Panchkula': {
-    title: '📋 Panchkula District Courts',
-    headers: ['SR NO', "Name of Judicial Officer's", 'Google Meet Link', 'VC Coordinator Name', 'VC Coordinator Contact', 'VC Coordinator Email', 'Naib Court Name', 'Naib Court Contact'],
-    keys:    ['SR NO', "Name Of Judicial Officer's", 'GOOGLE MEET Link', 'VC Coordinator Name', 'VC Coordinator Contact', 'VC Coordinator Email ID', 'Naib Court Name', 'Naib Court Contact'],
-    linkCols: ['GOOGLE MEET Link'],
-    filterEmpty: 'GOOGLE MEET Link'
-  },
-  'highcourt': {
-    title: '🔱 Punjab & Haryana High Court',
-    headers: ['Sr. No.', "Hon'ble Judge Name", 'Court Room', 'Roster', 'VC Link (Zoom)', 'Meeting ID', 'Not Holding Court', 'Distribution Court No.'],
-    keys:    ['Sr. No.', "Hon'ble Judge Name", 'Court Room NO', 'ROSTER Detail', 'VC Link For ZOOM', 'Meeting ID', 'Judges Not Holding Court', 'Distribution Court NO'],
-    linkCols: ['VC Link For ZOOM'],
-    filterEmpty: "Hon'ble Judge Name"
-  },
-  'Punjab Consumer': {
-    title: '🛡️ Punjab Consumer Court',
-    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Password'],
-    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Password ( If Required )'],
-    linkCols: ['VC Link ( Cisco WebX Meeting )'],
-    filterEmpty: 'Name of Court'
-  },
-  'Chandigarh Consumer': {
-    title: '🛡️ Chandigarh Consumer Court',
-    headers: ['Sr. No.', 'Name of Court', 'VC Link (WebEx / Google Meet)', 'Meeting ID', 'Password'],
-    keys:    ['Sr. No.', 'Name of Court', 'VC Link (WebEx / Google Meet)', 'Meeting ID', 'Password (If Required)'],
-    linkCols: ['VC Link (WebEx / Google Meet)'],
-    filterEmpty: 'Name of Court'
-  },
-  'Rera Punjab': {
-    title: '🏢 RERA Punjab',
-    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Meeting ID', 'Password'],
-    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Meeting ID', 'Password ( If Required )'],
-    linkCols: ['VC Link ( Cisco WebX Meeting )'],
-    filterEmpty: 'Name of Court'
-  },
-  'Haryana Consumer': {
-    title: '🛡️ Haryana Consumer Court',
-    headers: ['Sr. No.', 'Name of Court', 'VC Link (Cisco WebEx)', 'Password'],
-    keys:    ['Sr. No.', 'Name of Court', 'VC Link ( Cisco WebX Meeting )', 'Password ( If Required )'],
-    linkCols: ['VC Link ( Cisco WebX Meeting )'],
-    filterEmpty: 'Name of Court'
-  }
-};
-// ── LOAD TAB ──
-async function loadTab(tabName, forceRefresh = false) {
-  currentTab = tabName;
-  const config = tabConfig[tabName];
-  document.getElementById('categories').style.display = 'none';
-  document.getElementById('dataSection').style.display = 'block';
-  document.getElementById('categoryTitle').innerText = config.title;
-  document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Loading data...</div>';
-  try {
-    const data = await fetchTab(tabName, forceRefresh);
-    renderTable(data, config);
-  } catch(e) {
-    document.getElementById('dataList').innerHTML = '<p class="error">❌ Failed to load data. Please try again.</p>';
-  }
-}
-function refreshCurrentTab() {
-  if (currentTab) loadTab(currentTab, true);
-}
-// ── RENDER TABLE ──
-function renderTable(data, config, highlight = '') {
-  const filtered = data.filter(row => row[config.filterEmpty] && row[config.filterEmpty].trim() !== '');
-  if (!filtered.length) {
-    document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No data found.</p>';
-    return;
-  }
-  const thead = config.headers.map(h => `<th>${h}</th>`).join('');
-  const tbody = filtered.map(row => {
-    const cells = config.keys.map((key, i) => {
-      const val = row[key] || '';
-      if (config.linkCols.includes(key) && val.startsWith('http')) {
-        return `<td><a class="btn" href="${val}" target="_blank" rel="noopener">🔗 Join</a></td>`;
-      }
-      const displayed = highlight
-        ? val.replace(new RegExp(`(${highlight})`, 'gi'), '<mark>$1</mark>')
-        : val || '-';
-      return `<td>${displayed}</td>`;
-    }).join('');
-    return `<tr>${cells}</tr>`;
-  }).join('');
-  document.getElementById('dataList').innerHTML = `
-    <p class="scroll-hint"><span class="arrow left">❮</span><span>Swipe Left / Right to view all columns</span><span class="arrow right">❯</span></p>
-    <div class="table-wrapper">
-      <table>
-        <thead><tr>${thead}</tr></thead>
-        <tbody>${tbody}</tbody>
-      </table>
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <div class="seal" aria-hidden="true">
+        <svg class="ic ic-fill" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M12 3v18M5 8h14M7 8l-3 6a3 3 0 0 0 6 0L7 8zm10 0l-3 6a3 3 0 0 0 6 0l-3-6zM8 21h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <b>Court VC Links</b>
+        <div class="sub">Virtual hearing links · Punjab &amp; Haryana - by Prateek Garg</div>
+      </div>
     </div>
-  `;
-}
-// ── SEARCH (debounced) ──
-let searchTimer = null;
-document.getElementById('search').addEventListener('input', function() {
-  clearTimeout(searchTimer);
-  const raw = this.value;
-  searchTimer = setTimeout(() => runSearch(raw), 300);
-});
-async function runSearch(raw) {
-  const val = raw.trim().toLowerCase();
-  if (!val) {
-    goBack();
-    return;
-  }
-  document.getElementById('categories').style.display = 'none';
-  document.getElementById('dataSection').style.display = 'block';
-  document.getElementById('categoryTitle').innerText = `🔍 Search: "${raw}"`;
-  document.getElementById('dataList').innerHTML = '<div class="loading">⏳ Searching...</div>';
-  try {
-    const results = await Promise.all(
-      Object.entries(tabConfig).map(async ([tabName, config]) => {
-        const data = await fetchTab(tabName);
-        return data
-          .filter(row => row[config.filterEmpty])
-          .filter(row =>
-            Object.values(row).some(v => v && v.toString().toLowerCase().includes(val))
-          )
-          .map(row => ({ ...row, _tab: config.title, _config: config }));
-      })
-    );
-    const all = results.flat();
-    if (!all.length) {
-      document.getElementById('dataList').innerHTML = '<p style="text-align:center;color:#888;padding:20px;">No results found.</p>';
-      return;
-    }
-    const grouped = {};
-    all.forEach(row => {
-      if (!grouped[row._tab]) grouped[row._tab] = { rows: [], config: row._config };
-      grouped[row._tab].rows.push(row);
-    });
-    const safe = escapeRegex(val);
-    let html = '';
-    for (const [title, { rows, config }] of Object.entries(grouped)) {
-      const thead = config.headers.map(h => `<th>${h}</th>`).join('');
-      const tbody = rows.map(row => {
-        const cells = config.keys.map(key => {
-          const v = row[key] || '';
-          if (config.linkCols.includes(key) && v.startsWith('http')) {
-            return `<td><a class="btn" href="${v}" target="_blank" rel="noopener">🔗 Join</a></td>`;
-          }
-          const displayed = v.replace(new RegExp(`(${safe})`, 'gi'), '<mark>$1</mark>') || '-';
-          return `<td>${displayed}</td>`;
-        }).join('');
-        return `<tr>${cells}</tr>`;
-      }).join('');
-      html += `
-        <p style="font-weight:700;margin:16px 0 8px;color:#1e3a8a;">${title}</p>
-        <p class="scroll-hint"><span class="arrow left">❮</span><span>Swipe Left / Right to view all columns</span><span class="arrow right">❯</span></p>
-        <div class="table-wrapper" style="margin-bottom:20px;">
-          <table>
-            <thead><tr>${thead}</tr></thead>
-            <tbody>${tbody}</tbody>
-          </table>
-        </div>`;
-    }
-    document.getElementById('dataList').innerHTML = html;
-  } catch (e) {
-    document.getElementById('dataList').innerHTML = '<p class="error">❌ Search failed. Please try again.</p>';
-  }
-}
-// ── BACK ──
-function goBack() {
-  document.getElementById('categories').style.display = 'grid';
-  document.getElementById('dataSection').style.display = 'none';
-  document.getElementById('search').value = '';
-  currentTab = '';
-}
-</script>
+    <div class="topbar-right">
+      <a class="cand-chip" href="#support">
+        <span class="dot">PG</span>
+        <span class="ctext">Supporting <b>Adv. Prateek Garg</b></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="poster-card">
+      <img src="img/poster.jpg" alt="Vote &amp; Support — Advocate Prateek Garg for Treasurer, District Bar Association, Chandigarh. Election 11 September 2026." />
+    </div>
+    <div class="hero-copy">
+      <span class="eyebrow">
+        <svg class="ic ic-fill" viewBox="0 0 24 24" style="width:13px;height:13px"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
+        District Bar Association, Chandigarh · Election 11 September 2026
+      </span>
+      <div class="vote-line"><span class="vote-tag">Vote Support &amp; Elect</span></div>
+      <h1>Adv. Prateek Garg</h1>
+      <p class="role">Candidate for <b>Treasurer</b> — building a transparent, accountable &amp; digital-first Bar.</p>
+      <div class="promises">
+        <span>Transparent Accounts</span>
+        <span>Digital Court Support</span>
+        <span>Faster Advocate Services</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-gold" id="heroCall" href="tel:+918894831016"><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+        <a class="btn btn-wa" id="heroWa" href="https://wa.me/918894831016?text=Hello%20Advocate%20Prateek%20Garg" target="_blank" rel="noopener"><svg class="ic ic-fill" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2s-1.2.3-3.9-.8-4.3-3.9-4.5-4.1-1.1-1.5-1.1-2.9.7-2 1-2.3a1 1 0 0 1 .8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5-.4.4c-.2.2-.3.4-.1.7s.7 1.2 1.6 2c1.1.9 1.9 1.2 2.2 1.3s.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4s0 .8-.2 1.3z"/></svg>WhatsApp</a>
+        <a class="btn btn-ghost-light" href="#tool"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Get Court Links</a>
+        <br/>
+        <span class="date-badge">
+          <svg class="ic" viewBox="0 0 24 24" style="font-size:22px;color:var(--gold)"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span><span class="l">Election Day</span><span class="d">11 September 2026</span></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOL ===== -->
+<main class="tool" id="tool">
+  <div class="wrap">
+    <div class="tool-head" id="toolHead">
+      <h2>Find your court &amp; join the hearing</h2>
+      <p>Pick a court below, or search any court or judge to jump straight to the meeting links.</p>
+    </div>
+
+    <div class="searchbar">
+      <div class="search" id="searchBox">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="searchInput" type="text" placeholder="Search court or judge name…" autocomplete="off" />
+        <button class="clearx" id="clearBtn" aria-label="Clear"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+    </div>
+
+    <!-- HOME VIEW -->
+    <div id="homeView">
+      <div class="section-label"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>Advocate tools</div>
+      <div class="tools-row">
+        <a class="tool-tile" href="https://filing.ecourts.gov.in/pdedev/" target="_blank" rel="noopener">
+          <div class="tt-ic ic-blue"><svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg></div>
+          <div class="tt-body"><b>E-Filing</b><span>File cases online on the eCourts portal</span></div>
+          <svg class="ic tt-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="tool-tile" href="https://hcph.gov.in/" target="_blank" rel="noopener">
+          <div class="tt-ic ic-navy"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9m4 12V9m6 12V9m4 12V9M3 9h18L12 3 3 9z"/></svg></div>
+          <div class="tt-body"><b>High Court Judgements</b><span>Search Punjab &amp; Haryana HC judgments</span></div>
+          <svg class="ic tt-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <button class="tool-tile locked" id="feeBtn" disabled aria-disabled="true">
+          <div class="tt-ic ic-gold"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h8"/></svg></div>
+          <div class="tt-body"><b>Court Fee Calculator</b><span>Coming soon</span></div>
+          <svg class="ic tt-ext" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </button>
+      </div>
+      <div id="recentsWrap" class="hidden">
+        <div class="section-label"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Recently used</div>
+        <div class="chips" id="recentsChips"></div>
+      </div>
+      <div id="favWrap" class="hidden">
+        <div class="section-label"><svg class="ic ic-fill" viewBox="0 0 24 24"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>Favorites</div>
+        <div class="chips" id="favChips"></div>
+      </div>
+      <div class="section-label" id="allLabel"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>All courts &amp; tribunals</div>
+      <div class="court-grid" id="courtGrid"></div>
+    </div>
+
+    <!-- SEARCH RESULTS VIEW -->
+    <div id="searchView" class="hidden">
+      <div class="section-label" id="searchLabel"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Results</div>
+      <div class="vc-cards" id="searchResults" style="display:flex"></div>
+      <div class="empty no-results" id="noResults"><div class="big">🔍</div>No courts or judges match your search.</div>
+    </div>
+
+    <!-- COURT DETAIL VIEW -->
+    <div id="detailView" class="hidden">
+      <div class="detail-head">
+        <button class="btn-back" id="backBtn"><svg class="ic" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>All courts</button>
+        <div class="detail-title">
+          <div class="cicon" id="detailIcon"></div>
+          <div>
+            <h2 id="detailName"></h2>
+            <div class="meta" id="detailMeta"></div>
+          </div>
+        </div>
+        <div class="detail-actions">
+          <button class="btn-soft" id="refreshBtn" title="Fetch the latest data from the sheet"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg><span>Refresh</span></button>
+          <button class="btn-soft" id="favDetail"><svg class="ic" viewBox="0 0 24 24"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><span class="t">Favorite</span></button>
+          <button class="btn-soft" id="shareBtn"><svg class="ic" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
+        </div>
+      </div>
+      <div class="empty" id="detailLoading" style="display:none"><div class="big">⏳</div>Loading court links…</div>
+      <div class="table-card" id="tableCard"></div>
+      <div class="vc-cards" id="cardsBody"></div>
+      <div class="empty no-results" id="detailNoResults"><div class="big">🔍</div>No courts or judges match your search here.</div>
+    </div>
+  </div>
+</main>
+
+<!-- ===== SUPPORT FOOTER ===== -->
+<section class="support" id="support">
+  <div class="wrap">
+    <div class="who">
+      <img class="ph" src="img/prateek-garg.jpg" alt="Advocate Prateek Garg" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Prateek+Garg&amp;background=1E40AF&amp;color=fff&amp;size=120'" />
+      <div>
+        <b>Advocate Prateek Garg</b>
+        <span>Candidate for Treasurer — District Bar Association, Chandigarh</span>
+      </div>
+    </div>
+    <div class="promises-f">
+      <span><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Transparent Accounts</span>
+      <span><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Digital Court Support</span>
+      <span><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Faster Advocate Services</span>
+    </div>
+    <div class="acts">
+      <a class="btn btn-gold" href="tel:+918894831016"><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+      <a class="btn btn-wa" href="https://wa.me/918894831016" target="_blank" rel="noopener"><svg class="ic ic-fill" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2s-1.2.3-3.9-.8-4.3-3.9-4.5-4.1-1.1-1.5-1.1-2.9.7-2 1-2.3a1 1 0 0 1 .8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5-.4.4c-.2.2-.3.4-.1.7s.7 1.2 1.6 2c1.1.9 1.9 1.2 2.2 1.3s.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4s0 .8-.2 1.3z"/></svg>WhatsApp</a>
+    </div>
+  </div>
+  <div class="foot-credit">
+    <a href="https://www.advocateprateek.com" target="_blank" rel="noopener">advocateprateek.com</a> · <a href="tel:+918894831016">+91 88948 31016</a> · A free resource for the advocate community.
+  </div>
+</section>
+
+<!-- mobile sticky bar -->
+<div class="mobile-bar">
+  <a class="btn btn-gold" href="tel:+918894831016"><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call Prateek</a>
+  <a class="btn btn-wa" href="https://wa.me/918894831016" target="_blank" rel="noopener"><svg class="ic ic-fill" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
+</div>
+
+<!-- ===== FEE CALCULATOR MODAL ===== -->
+<div class="modal-overlay" id="feeModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Court Fee Calculator">
+    <div class="modal-head">
+      <div class="mh-ic"><svg class="ic" viewBox="0 0 24 24" style="width:21px;height:21px"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h8"/></svg></div>
+      <div><b>Court Fee Calculator</b><span>Ad-valorem estimate</span></div>
+      <button class="x" id="feeClose" aria-label="Close"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="fld">
+        <label for="suitVal">Value of suit / claim amount</label>
+        <div class="inp"><span class="pre">₹</span><input id="suitVal" type="text" inputmode="numeric" placeholder="0" autocomplete="off" /></div>
+        <div class="hint" id="valWords"></div>
+      </div>
+      <div class="fld">
+        <label>Ad-valorem rate</label>
+        <div class="seg" id="rateSeg">
+          <button data-rate="1" class="on">1%</button>
+          <button data-rate="2.5">2.5%</button>
+          <button data-rate="5">5%</button>
+          <button data-rate="custom">Custom</button>
+        </div>
+        <div class="inp" id="customRateWrap" style="margin-top:9px;display:none">
+          <input id="customRate" type="text" inputmode="decimal" placeholder="Enter rate" autocomplete="off" /><span class="suf">%</span>
+        </div>
+      </div>
+      <div class="fld" style="margin-bottom:8px">
+        <label>Maximum fee cap <span style="font-weight:500;color:var(--muted-2)">(optional)</span></label>
+        <div class="inp"><span class="pre">₹</span><input id="feeCap" type="text" inputmode="numeric" placeholder="No cap" autocomplete="off" /></div>
+      </div>
+      <div class="result">
+        <div class="rl">Estimated court fee</div>
+        <div class="rv"><span id="feeOut">₹0</span><button class="copy" id="feeCopy" aria-label="Copy fee"><svg class="ic" viewBox="0 0 24 24" style="width:15px;height:15px"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+        <div class="words" id="feeWords">Rupees zero only</div>
+      </div>
+      <div class="disclaimer">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+        <span>Indicative estimate only. Court-fee slabs vary by State and case type — always confirm against the current Court Fees schedule before filing.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg">Copied</span></div>
+
+<script src="data.js"></script>
+<script src="app.v2.js"></script>
 </body>
 </html>
